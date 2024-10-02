@@ -1,0 +1,68 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  background-color: hsl(0, 0%, 8%);
+  color: #ffffff;
+}
+.Categories-container {
+  padding: 20px;
+  max-width: 1200px;
+}
+.menu-button {
+  background-color: hsl(357, 92%, 47%);
+  color: var();
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.genre-section {
+  margin-bottom: 40px;
+  border-bottom: 1px solid #333;
+}
+.genre-section h2 {
+  font-size: 24px;
+  margin: 15px 0;
+  color: #333;
+}
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+.movie-card {
+  background-color: #222222;
+  border-radius: 8px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s;
+}
+.movie-card:hover {
+  transform: scale(1.05); /* Förstorar kortet vid hover */
+}
+
+.movie-card img {
+  width: 100px;
+  height: auto;
+}
+
+.movie-details {
+  padding: 10px;
+  text-align: left;
+}
+
+.movie-details h3 {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #333;
+}
+
+.movie-details p {
+  font-size: 14px;
+  color: #3c3a3a;
+  margin: 3px 0;
+}
