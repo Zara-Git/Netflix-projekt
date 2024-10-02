@@ -3,6 +3,7 @@ import movieData from "./movies.json";
 import "./Categories.css";
 import GenreMenu from "./GenreMenu";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
@@ -48,6 +49,7 @@ const Categories = () => {
 
   return (
     <div className="Categories-container">
+      <Header />
       <button className="menu-button" onClick={toggleMenu}>
         Categori
       </button>
