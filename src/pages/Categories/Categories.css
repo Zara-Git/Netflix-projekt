@@ -10,7 +10,7 @@ body {
 }
 .menu-button {
   background-color: hsl(357, 92%, 47%);
-  color: #ffffff;
+  color: var();
   border: none;
   border-radius: 5px;
   padding: 10px 20px;

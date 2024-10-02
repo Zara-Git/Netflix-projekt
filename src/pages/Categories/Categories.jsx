@@ -57,7 +57,7 @@ const Categories = () => {
         <div className="movies">
           {moviesByGenre[selectedGenre]?.map((movie) => (
             <div key={movie.id} className="movie-card">
-              <img src={movie.image} alt={movie.title} />
+              <img src={movie.thumbnail} alt={movie.title} />
               <div className="movie-details">
                 <h3>{movie.title}</h3>
                 <p>{movie.description}</p>
