@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import MovieList from '../components/Movies/MovieList';
-import Header from '../components/Header/Header';
-import movieData from "../movies.json";
-import "../views/HomePage.css";
+import MovieList from '../../components/Movies/MovieList';
+import Header from '../../components/Header/Header';
+import movieData from "../../movies.json";
+import "../HomePage/HomePage.css";
 export default function HomePage() {
  const [movies, setMovies] = useState(movieData);
 return (

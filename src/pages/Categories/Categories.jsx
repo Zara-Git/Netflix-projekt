@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import movieData from "./movies.json";
 import "./Categories.css";
 import GenreMenu from "./GenreMenu";
+import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(null);
-
+  const navigate = useNavigate();
   // Move useEffect to the main level
   useEffect(() => {
     const categorizedMovies = {};
@@ -36,6 +37,10 @@ const Categories = () => {
   const handleGenreSelection = (genre) => {
     setSelectedGenre(genre);
     setMenuVisible(false);
+  };
+  
+  const handleNavigate = () => {
+    navigate("/category");
   };
 
   const genres = Object.keys(moviesByGenre);
