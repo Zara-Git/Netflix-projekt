@@ -8,7 +8,7 @@ function App() {
     <>
       <div>
         <RouterProvider router={router} />
-        <Categories />
+         <Categories /> 
       </div>
     </>
   );
