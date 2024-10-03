@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./MovieDetailes.css"; // Importera CSS-filen
 
@@ -11,7 +10,7 @@ const MovieDetails = () => {
     return (
       <div className="movie-details-container">
         <h2>No Movie Found</h2>
-        <p>Sorry, we couldn't find the movie details you were looking for.</p>
+        <p>Sorry, we could not find the movie details you were looking for.</p>
         <button onClick={() => navigate("/category")}>
           Go back to Categories
         </button>
