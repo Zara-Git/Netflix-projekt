@@ -81,7 +81,7 @@ navigate(`/movie/${suggestion.title}`)
         {searchResult.length > 0
           ? searchResult.map((mov, index) => (
               <article key={index} className="movie_result">
-                <h3>{mov.title}</h3>
+                 <h3>{mov.title}</h3> 
               </article>
             ))
           : error && <p className="error">{error}</p>}
