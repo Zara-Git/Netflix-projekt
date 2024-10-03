@@ -11,9 +11,10 @@ function FilmView (){
     const selectedMovie = data.find((movie) => movie.title === movieTitle);
 
 return(
-    <><Header />
+    <>
+    
     <div className='movie-container'>
-        
+    <Header />
         <MovieInfo movie = { selectedMovie }  />
     </div>
     </>
