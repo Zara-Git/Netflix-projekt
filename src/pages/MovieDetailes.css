@@ -9,7 +9,7 @@
   justify-content: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
   height: 100vh;
-  position: relative;
+  /* position: relative; */
 }
 .movie-thumbnail {
   max-width: 100%;
