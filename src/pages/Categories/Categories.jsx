@@ -3,13 +3,23 @@ import movieData from "./movies.json";
 import "./Categories.css";
 import GenreMenu from "./GenreMenu";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
+=======
+import Header from "../../components/Header/Header";
+>>>>>>> 2a1ad697b41a479c1af510dfe64c0c793e0a9c3d
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(null);
+<<<<<<< HEAD
   const navigate = useNavigate();
   // Move useEffect to the main level
+=======
+
+  const navigate = useNavigate();
+
+>>>>>>> 2a1ad697b41a479c1af510dfe64c0c793e0a9c3d
   useEffect(() => {
     const categorizedMovies = {};
 
@@ -43,17 +53,23 @@ const Categories = () => {
     navigate("/category");
   };
 
+  // Korrekt namn på funktion och lägga till onClick för att navigera till detaljer
+  const handleMovieClick = (movie) => {
+    console.log("Navigating with movie:", movie);
+    navigate("/movie-details", { state: { movie } });
+  };
+
   const genres = Object.keys(moviesByGenre);
 
   return (
     <div className="Categories-container">
+      <Header />
       <button className="menu-button" onClick={toggleMenu}>
         Categori
       </button>
 
-      {/* Render the GenreMenu component if menuVisible is true */}
       {menuVisible && (
-        <GenreMenu genres={genres} onSelectGenre={setSelectedGenre} />
+        <GenreMenu genres={genres} onSelectGenre={handleGenreSelection} />
       )}
 
       <div className="genre-section">
@@ -61,7 +77,11 @@ const Categories = () => {
 
         <div className="movies">
           {moviesByGenre[selectedGenre]?.map((movie) => (
-            <div key={movie.id} className="movie-card">
+            <div
+              key={movie.id}
+              className="movie-card"
+              onClick={() => handleMovieClick(movie)}
+            >
               <img src={movie.thumbnail} alt={movie.title} />
               <div className="movie-details">
                 <h3>{movie.title}</h3>
