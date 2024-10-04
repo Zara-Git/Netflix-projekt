@@ -1,45 +1,67 @@
+/* General styling for the entire movie details page */
+
 .movie-details-container {
-  color: white;
-  background-color: black;
-  min-height: 100vh;
-}
-.movie-banner {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-  height: 100vh;
-  /* position: relative; */
-}
-.movie-thumbnail {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-.movie-info {
-  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
   padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
 }
-.movie-info h2 {
-  margin: 0;
-  font-size: 5.5rem;
-}
-.movie-info p {
-  margin: 10px 0;
-  font-size: 40px;
-}
-.back-button {
+
+.movie-thumbnail {
+  width: 300px;
+  height: auto;
   margin-top: 20px;
+}
+
+.movie-thumbnail:hover {
+  transform: scale(1.05); /* Subtle hover effect */
+}
+
+.movie-detailes-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+/* Movie Info */
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.movie-info p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
+
+/* Button Styling */
+.back-button {
+  margin-top: 30px;
   padding: 10px 20px;
-  background-color: #e50914;
+  background-color: #e50914; /* Netflix red */
   color: white;
   border: none;
   border-radius: 5px;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
+
 .back-button:hover {
-  background-color: #f40612;
+  background-color: #f40612; /* Slight hover effect on button */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .movie-thumbnail {
+    height: 50vh;
+  }
 }
