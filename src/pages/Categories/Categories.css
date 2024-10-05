@@ -20,12 +20,12 @@ body {
 }
 .genre-section {
   margin-bottom: 40px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #33333330;
 }
 .genre-section h2 {
   font-size: 24px;
   margin: 15px 0;
-  color: #333;
+  color: #f2f2f2;
 }
 .movies {
   display: flex;
@@ -46,7 +46,7 @@ body {
 }
 
 .movie-card img {
-  width: 100px;
+  width: 260px;
   height: auto;
 }
 
@@ -58,11 +58,11 @@ body {
 .movie-details h3 {
   font-size: 18px;
   margin: 5px 0;
-  color: #333;
+  color: #fbf9f9;
 }
 
 .movie-details p {
   font-size: 14px;
-  color: #3c3a3a;
+  color: #f0f0f0;
   margin: 3px 0;
 }
