@@ -26,15 +26,41 @@ describe("categories component", () => {
       expect(screen.getByText(genre)).toBeInTheDocument();
     });
   });
-  //testa toggle menu funktionen
-  it("taggles genre menu visiblity when the button is cliked ", () => {
-    const menuBtton = screen.getByText(/Categori/i);
-    //kontrollera att meny inte är synlig i början
-    expect(
-      screen.queryByText(movieData[0].genre.split(", ")[0])
-    ).not.toBeInTheDocument();
+  describe("toggleMenu function", () => {
+    it("toggles the menu visibility when the button is clicked", () => {
+      const menuButton = screen.getByText(/Categori/i);
 
-    // klicka för att dölja menyn
-    fireEvent.click(menuBtton);
+      // Kontrollera att menyn inte är synlig i början
+      expect(
+        screen.queryByText(movieData[0].genre.split(", ")[0])
+      ).not.toBeInTheDocument();
+
+      // Klicka på knappen för att visa menyn
+      fireEvent.click(menuButton);
+
+      // Kontrollera att menyn nu är synlig
+      const firstGenre = movieData[0].genre.split(", ")[0];
+      expect(screen.getByText(firstGenre)).toBeInTheDocument();
+
+      // Klicka igen för att dölja menyn
+      fireEvent.click(menuButton);
+
+      // Kontrollera att menyn har dolts
+      expect(screen.queryByText(firstGenre)).not.toBeInTheDocument();
+    });
+  });
+  describe("handelGenreSelection function", () => {
+    it("set the selected genre and hides the menu after selection", () => {
+      fireEvent.click(screen.getByText(/Categori/));
+
+      const firstGenre = movieData[0].genre.split(", ")[0];
+      fireEvent.click = screen.getByText(firstGenre);
+
+      //kontrollera att den valda genren vissas
+      expect(screen.queryByText(firstGenre)).toBeInTheDocument();
+      expect(
+        screen.queryByText(movieData[1].genre.split(", ")[0])
+      ).toBeInTheDocument();
+    });
   });
 });
