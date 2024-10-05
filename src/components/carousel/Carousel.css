@@ -1,0 +1,38 @@
+.carousel_container {
+  position: absolute;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  /* padding: 0 50px; */
+
+  .carousel_content {
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--background-color);
+    margin: 0 10px;
+    gap: 20px;
+  }
+
+  .carousel_content h3 {
+    color: var(--primary-text-color);
+  }
+
+  .carousel_img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px gray;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .carousel_img:hover {
+    transform: scale(1.1);
+  }
+
+  .genre_info {
+    color: var(--secondary-text-color);
+    margin-top: 10px;
+  }
+}

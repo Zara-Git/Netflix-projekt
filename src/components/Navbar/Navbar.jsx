@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar">
       <a href="#" onClick={()=> navigate("/")}>Home</a>
       <a href="#">Trending</a>
-      <a href="#">Favorite</a>
+      <a href="#" onClick={()=> navigate("/bookmarks")}>Bookmarks</a>
       <a href="#" onClick={() => navigate("/category")}>Category</a>
       <a href="#">Login</a>
     </nav>
