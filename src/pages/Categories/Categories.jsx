@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import movieData from "./movies.json";
 import "./Categories.css";
 import GenreMenu from "./GenreMenu";
@@ -9,6 +9,8 @@ const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(null);
+ 
+  // Move useEffect to the main level
 
   const navigate = useNavigate();
 
@@ -39,6 +41,10 @@ const Categories = () => {
   const handleGenreSelection = (genre) => {
     setSelectedGenre(genre);
     setMenuVisible(false);
+  };
+  
+  const handleNavigate = () => {
+    navigate("/category");
   };
 
   // Korrekt namn på funktion och lägga till onClick för att navigera till detaljer

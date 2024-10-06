@@ -1,4 +1,3 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./MovieDetailes.css"; // Importera CSS-filen
 
@@ -11,7 +10,7 @@ const MovieDetails = () => {
     return (
       <div className="movie-details-container">
         <h2>No Movie Found</h2>
-        <p>Sorry, we couldn't find the movie details you were looking for.</p>
+        <p>Sorry, we couldnot find the movie details you were looking for.</p>
         <button onClick={() => navigate("/category")}>
           Go back to Categories
         </button>
@@ -24,10 +23,7 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-details-container">
-      <div
-        className="movie-banner"
-        style={{ backgroundImage: `url(${movie.thumbnail})` }}
-      >
+      <div className="movie-details-content">
         <img
           className="movie-thumbnail"
           src={movie.thumbnail}
@@ -51,6 +47,7 @@ const MovieDetails = () => {
           </p>
         </div>
       </div>
+
       <button className="back-button" onClick={() => navigate("/category")}>
         Go back to Categories
       </button>

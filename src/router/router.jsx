@@ -1,8 +1,7 @@
 //Här skapar vi en router-konfiguration
 import { createBrowserRouter } from "react-router-dom";
 
-
-import HomePage from '../pages/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 import Categories from "../pages/Categories/Categories";
 import MovieDetails from "../pages/MovieDetailes/MovieDetailes";
 import FilmView from '../pages/FilmView/FilmView'

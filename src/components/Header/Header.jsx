@@ -3,12 +3,14 @@ import Search from '../Search/Search';
 import "../Header/Header.css";
 
 export default function Header() {
+
+
   return (
     <header className='header'>
         <div className='logo'>
-           <a href="/">Webflix</a>
+           <a href="#">Webflix</a>
         </div>
-        <Search />
+        <Search inputStyle ={{width:"800px"}}/>
       <Navbar/>
     </header>
   )
