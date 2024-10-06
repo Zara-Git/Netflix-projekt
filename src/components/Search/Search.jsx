@@ -35,7 +35,7 @@ export default function Search({inputStyle}) {
     setSearchQuary(movie.title);
     navigate("/movie-details/", { state: { movie } });
   };
-//la till kod
+
   return (
     <form className="searchMovieForm">
       <input
