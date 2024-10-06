@@ -33,9 +33,9 @@ export default function Search({inputStyle}) {
 
   const navigateToMovie = (movie) => {
     setSearchQuary(movie.title);
-    navigate(`/movie/${movie.title}`);
+    navigate("/movie-details/", { state: { movie } });
   };
-
+//la till kod
   return (
     <form className="searchMovieForm">
       <input
