@@ -50,7 +50,7 @@ const Categories = () => {
   // Korrekt namn på funktion och lägga till onClick för att navigera till detaljer
   const handleMovieClick = (movie) => {
     console.log("Navigating with movie:", movie);
-    navigate("/movie-details", { state: { movie } });
+    navigate ('/movie/' + movie.title)
   };
 
   const genres = Object.keys(moviesByGenre);

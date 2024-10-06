@@ -50,7 +50,7 @@ export default function Search({inputStyle}) {
       
       <ul className="suggestion_list">
         {movieResults.map((movie, index) => (
-          <li key={index} className="suggestion_item" onClick={navigateToMovie}>
+          <li key={index} className="suggestion_item" onClick={() =>navigateToMovie(movie)}>
             {movie.title}
           </li>
         ))}

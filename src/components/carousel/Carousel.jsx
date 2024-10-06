@@ -2,8 +2,11 @@ import Slider from "react-slick";
 import "../carousel/slick.css";
 import "../carousel/slick-theme.css";
 import "../carousel/Carousel.css";
+import { useNavigate } from 'react-router-dom';
 
 export default function Carousel({movies}) {
+  const navigate = useNavigate(); 
+
  let settings = {
     dots: true,
     infinite: true,
@@ -34,7 +37,7 @@ export default function Carousel({movies}) {
       <Slider {...settings}>
         {movies.map((mov, index) => (
           <div key={index} className="carousel_content">
-            <img src={mov.thumbnail} alt={mov.title} className="carousel_img" />
+            <img src={mov.thumbnail} alt={mov.title} className="carousel_img" onClick={() => navigate ('/movie/'+ mov.title)} />
             <h3>{mov.title}</h3>
             <p className="genre_info">{mov.genre}</p>
           </div>
