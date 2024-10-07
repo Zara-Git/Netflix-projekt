@@ -12,9 +12,8 @@ function FilmView (){
 
 return(
     <>
-    
-    <div className='movie-container'>
     <Header />
+    <div className='movie-container'>
         <MovieInfo movie = { selectedMovie }  />
     </div>
     </>
