@@ -1,15 +1,19 @@
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    margin-top: 20px;
 
 
     & .logo a{
      font-size: 3.5rem;
      text-decoration: none;
-     font-weight: 500;
+     font-weight: 700;
      color: #e50914;
+     letter-spacing: 3px;
+
 
    }
    &

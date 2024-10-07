@@ -2,90 +2,59 @@ import { useState } from "react";
 import "../Search/Search.css";
 import movieData from "../../movies.json";
 import { useNavigate } from "react-router-dom";
-export default function Search() {
-  const [search, setSearch] = useState("");
+import Fuse from "fuse.js";
+
+export default function Search({inputStyle}) {
+  const [searchQuary, setSearchQuary] = useState("");
+  const [movieResults, setMovieResults] = useState([]);
   const [error, setError] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const [suggestions, setSearchSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleChangeInput = (e) => {
+  const fuse = new Fuse(movieData, {
+    keys: ["title", "genre", "actors"], // nyckelord som Fuse.js ska använda
+    includeScore: true,
+    threshold: 0.3,
+  });
+
+  const handleSerach = (e) => {
     const userInput = e.target.value;
-    setSearch(userInput);
-    setError("");
-    
-    if (!userInput.trim()) {
-      
-      setSearchResult([]);
-      setError("Please insert a Movie To Search");
-      setSearchSuggestions([]);
-      setShowSuggestions(false);
-      return;
-    }
-   
-    
+    setSearchQuary(userInput);
 
-    const filteredResult = movieData
-      .filter((input) => {
-        return (
-          input.title.toLowerCase().includes(search.toLowerCase()) ||
-          input.genre.toLowerCase().includes(search.toLowerCase()) ||
-          input.actors.join(" ").toLowerCase().includes(search.toLowerCase())
-        );
-      })
-      .slice(0, 5);
-    if (filteredResult.length === 0) {
-      setError("No Movie found.");
+    if (userInput.trim() ) {
+      const result = fuse.search(userInput);
+      const suggestionResults = result.map((result) => result.item);
+      setMovieResults(suggestionResults);
+      setError("No result found");
     } else {
+      setMovieResults([]);
       setError("");
     }
-
-  setSearchSuggestions(filteredResult);
-  setShowSuggestions(true);
   };
- 
-const handleSuggestionsResult = (suggestion) => {
-setSearch(suggestion.title);
-setSearchResult([suggestion]);
-setShowSuggestions(false);
-setError("");
-navigate(`/movie/${suggestion.title}`)
-}
-  
 
+  const navigateToMovie = (movie) => {
+    setSearchQuary(movie.title);
+    navigate("/movie-details/", { state: { movie } });
+  };
+//la till kod
   return (
-    <div className="searchMovieForm">
+    <form className="searchMovieForm">
       <input
+        className="serachInput"
         type="text"
-        id="searchInput"
-        placeholder="Search..."
-        value={search}
-        onChange={handleChangeInput}
-        className="searchText"
+        value={searchQuary}
+        onChange={handleSerach}
         required
+        placeholder="Search..."
+        style={inputStyle}
       />
-
-      {error && <p className="error">{error}</p>}
-
-      {showSuggestions && suggestions.length > 0 && (
-        <ul className="suggestion_list">
-           {suggestions.map((movie, index)=>(
-            <li key={index} className="suggestion_item" onClick={()=> handleSuggestionsResult(movie)}>
-             {movie.title} 
-            </li>
-           ))}
-        </ul>
-      )}
-      <div className="results">
-        {searchResult.length > 0
-          ? searchResult.map((mov, index) => (
-              <article key={index} className="movie_result">
-                 <h3>{mov.title}</h3> 
-              </article>
-            ))
-          : error && <p className="error">{error}</p>}
-      </div>
-    </div>
+      
+      <ul className="suggestion_list">
+        {movieResults.map((movie, index) => (
+          <li key={index} className="suggestion_item" onClick={() =>navigateToMovie(movie)}>
+            {movie.title}
+          </li>
+        ))}
+      </ul>
+    </form>
   );
 }
