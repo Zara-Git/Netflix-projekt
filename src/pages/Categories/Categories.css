@@ -1,95 +1,92 @@
 body {
-  body {
-    font-family: "Roboto", sans-serif;
-    background-color: #141414; /* Netflix's dark background */
-    color: #fff; /* Text color to match the theme */
-  }
+  margin: 150px;
+  background-color: #141414;
+  font-family: "Arial", sans-serif;
+  width: 400px;
 }
-.Categories-container {
+.categories-container {
+  margin-top: 30px;
   padding: 20px;
-  max-width: 1200px;
-}
-.menu-button {
-  background-color: hsl(357, 92%, 47%);
-  color: var();
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.genre-section {
-  margin-bottom: 40px;
-  border-bottom: 1px solid #33333330;
+  color: #fff;
+  width: 300px;
 }
 .genre-section h2 {
-  font-size: 24px;
-  margin: 15px 0;
-<<<<<<< HEAD
-  color: #dad9d9;
-=======
-  color: #f2f2f2;
->>>>>>> 694bdd245b0af4b9d40d8d6a861206446eabe55d
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #e50914;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20px;
+  gap: 150px;
 }
 .movie-card {
-  background-color: rgb(50, 47, 47);
-  border-radius: 10px;
+  width: 400px;
+  height: auto;
+
+  background-color: #1c1c1c;
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
   cursor: pointer;
-  width: 100%; /* Ensures all movie cards are the same width */
-  max-width: 250px; /* Max width for consistency */
-  margin: 0 auto;
-}
-.movie-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .movie-card img {
-<<<<<<< HEAD
   width: 100%;
-  height: 350px; /* Fixed height to ensure all images are the same size */
-  object-fit: cover; /* Ensures image maintains aspect ratio without distortion */
-  border-bottom: 1px solid #ddd;
-=======
-  width: 260px;
-  height: auto;
->>>>>>> 694bdd245b0af4b9d40d8d6a861206446eabe55d
+  object-fit: cover;
 }
-
+.movie-card img:hover {
+  overflow: hidden;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 .movie-details {
-  padding: 15px;
+  padding: 10px;
+  margin-left: 10px;
+  height: 1rem;
 }
-
-.movie-details h3 {
-<<<<<<< HEAD
-  font-size: 20px;
-  color: #d8d8d8;
-  margin-bottom: 10px;
-=======
-  font-size: 18px;
-  margin: 5px 0;
-  color: #fbf9f9;
->>>>>>> 694bdd245b0af4b9d40d8d6a861206446eabe55d
+.movie-details h1 {
+  font-size: 2rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 10px;
+  margin-left: 10px;
+  color: #fff;
 }
 
 .movie-details p {
-  font-size: 14px;
-<<<<<<< HEAD
-  color: #777;
-  line-height: 1.5;
-=======
-  color: #f0f0f0;
-  margin: 3px 0;
->>>>>>> 694bdd245b0af4b9d40d8d6a861206446eabe55d
+  font-size: 1.5rem;
+  color: #b3b3b3;
+  padding: 18px;
+}
+.menu-button {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+.menu-button:hover {
+  background-color: #f6121d;
+}
+.GenreMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  z-index: 999;
+  transition: all 0.5s ease-in-out;
 }
