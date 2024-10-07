@@ -33,7 +33,7 @@ export default function Search({inputStyle}) {
 
   const navigateToMovie = (movie) => {
     setSearchQuary(movie.title);
-    navigate("/movie-details/", { state: { movie } });
+    navigate(`/movie/${movie.title}`);
   };
 
   return (

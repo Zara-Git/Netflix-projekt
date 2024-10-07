@@ -47,7 +47,7 @@ const Categories = () => {
 
   const handleMovieClick = (movie) => {
     console.log("Navigating with movie:", movie);
-    navigate("/movie-details", { state: { movie } });
+    navigate ('/movie/' + movie.title)
   };
 
   const genres = Object.keys(moviesByGenre);
