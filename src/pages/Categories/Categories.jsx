@@ -76,6 +76,7 @@ const Categories = () => {
               <img src={movie.thumbnail} alt={movie.title} />
               <div className="movie-details">
                 <h1>{movie.title}</h1>
+                <h3>{movie.actors}</h3>
                 <p>{movie.genre}</p>
               </div>
             </div>
