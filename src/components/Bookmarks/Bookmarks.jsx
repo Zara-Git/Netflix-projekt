@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Bookmarks.css';
 import Header from '../Header/Header'; // Import the existing Header component
+import { useNavigate } from 'react-router-dom';
 
 export default function Bookmarks() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+  const navigate = useNavigate();
 
   // Load bookmarks from localStorage when the component mounts
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function Bookmarks() {
         <ul className="bookmarks-list">
           {bookmarkedMovies.map((movie, index) => (
             <li key={index} className="bookmark-item">
-              <img src={movie.thumbnail} alt={movie.title} className="bookmark-poster" />
+              <img src={movie.thumbnail} alt={movie.title} className="bookmark-poster" onClick={() => navigate ('/movie/'+ movie.title)} />
               <div className="bookmark-info">
                 <h3>{movie.title}</h3>
                 <p>{movie.genre}</p>
