@@ -2,14 +2,13 @@ import Slider from "react-slick";
 import "../carousel/slick.css";
 import "../carousel/slick-theme.css";
 import "../carousel/Carousel.css";
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
-
-export default function Carousel({movies}) {
-  const navigate = useNavigate(); 
+export default function Carousel({ movies }) {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
-
+  const navigate = useNavigate(); 
+  
   useEffect(() => {
     const storedBookmarks = JSON.parse(localStorage.getItem("bookmarkedMovies")) || [];
     setBookmarkedMovies(storedBookmarks);
@@ -30,7 +29,7 @@ export default function Carousel({movies}) {
     localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmarks));
   };
 
- const settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
