@@ -10,8 +10,6 @@ const Categories = () => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(null);
 
-  // Move useEffect to the main level
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,14 +41,13 @@ const Categories = () => {
     setMenuVisible(false);
   };
 
-  const handleNavigate = () => {
-    navigate("/category");
-  };
+  // const handleNavigate = () => {
+  //   navigate("/category");
+  // };
 
-  // Korrekt namn på funktion och lägga till onClick för att navigera till detaljer
   const handleMovieClick = (movie) => {
     console.log("Navigating with movie:", movie);
-    navigate("/movie-details", { state: { movie } });
+    navigate ('/movie/' + movie.title)
   };
 
   const genres = Object.keys(moviesByGenre);
@@ -59,7 +56,7 @@ const Categories = () => {
     <div className="Categories-container">
       <Header />
       <button className="menu-button" onClick={toggleMenu}>
-        Categori
+        Category
       </button>
 
       {menuVisible && (
@@ -78,8 +75,9 @@ const Categories = () => {
             >
               <img src={movie.thumbnail} alt={movie.title} />
               <div className="movie-details">
-                <h3>{movie.title}</h3>
-                <p>{movie.description}</p>
+                <h1>{movie.title}</h1>
+                <h3>{movie.actors}</h3>
+                <p>{movie.genre}</p>
               </div>
             </div>
           ))}

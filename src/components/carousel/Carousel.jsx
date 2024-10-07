@@ -3,10 +3,12 @@ import "../carousel/slick.css";
 import "../carousel/slick-theme.css";
 import "../carousel/Carousel.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Carousel({ movies }) {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
-
+  const navigate = useNavigate(); 
+  
   useEffect(() => {
     const storedBookmarks = JSON.parse(localStorage.getItem("bookmarkedMovies")) || [];
     setBookmarkedMovies(storedBookmarks);
@@ -33,7 +35,7 @@ export default function Carousel({ movies }) {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    initialSlide: 0,
+    initialSlide:0,
     responsive: [
       {
         breakpoint: 600,
@@ -52,13 +54,12 @@ export default function Carousel({ movies }) {
       },
     ],
   };
-
   return (
     <section className="carousel_container">
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index} className="carousel_content">
-            <img src={movie.thumbnail} alt={movie.title} className="carousel_img" />
+            <img src={movie.thumbnail} alt={movie.title} className="carousel_img" onClick={() => navigate ('/movie/'+ movie.title)} />
             <h3>{movie.title}</h3>
             <p className="genre_info">{movie.genre}</p>
             <button
