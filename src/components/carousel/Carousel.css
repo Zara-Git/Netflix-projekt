@@ -1,5 +1,5 @@
 .carousel_container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
   position: relative;
@@ -68,11 +68,15 @@
   }
 
   .carousel_content {
-    max-width: 150px;
+    max-width: 150px; 
+    
   }
 }
 
 @media (max-width: 480px) {
+  .carousel_container {
+    max-width: 130px;
+  }
   .carousel_img {
     max-width: 120px;
   }

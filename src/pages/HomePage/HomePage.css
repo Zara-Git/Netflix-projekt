@@ -1,15 +1,62 @@
 .home_page_container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
 
-  & .recommended_movies_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
-    padding: 30px 20px;
+.home_page_container h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.recommended_movies_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  padding: 30px 20px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home_page_container {
+    padding: 10px;
+  }
+
+  .home_page_container h2 {
+    font-size: 20px;
+  }
+
+  .recommended_movies_container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
   }
 }
 
+@media (max-width: 480px) {
+  .home_page_container {
+    padding: 5px;
+  }
 
+  .home_page_container h2 {
+    font-size: 18px;
+  }
+
+  .recommended_movies_container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .recommended_movies_container .carousel_img {
+    max-width: 100px;
+  }
+}

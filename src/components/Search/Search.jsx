@@ -4,23 +4,23 @@ import movieData from "../../movies.json";
 import { useNavigate } from "react-router-dom";
 import Fuse from "fuse.js";
 
-export default function Search({inputStyle}) {
-  const [searchQuary, setSearchQuary] = useState("");
+export default function Search({ inputStyle }) {
+  const [searchQuery, setSearchQuery] = useState("");
   const [movieResults, setMovieResults] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const fuse = new Fuse(movieData, {
-    keys: ["title", "genre", "actors"], // nyckelord som Fuse.js ska använda
+    keys: ["title", "genre", "actors"],
     includeScore: true,
     threshold: 0.3,
   });
 
-  const handleSerach = (e) => {
+  const handleSearch = (e) => {
     const userInput = e.target.value;
-    setSearchQuary(userInput);
+    setSearchQuery(userInput);
 
-    if (userInput.trim() ) {
+    if (userInput.trim()) {
       const result = fuse.search(userInput);
       const suggestionResults = result.map((result) => result.item);
       setMovieResults(suggestionResults);
@@ -32,25 +32,25 @@ export default function Search({inputStyle}) {
   };
 
   const navigateToMovie = (movie) => {
-    setSearchQuary(movie.title);
+    setSearchQuery(movie.title);
     navigate("/movie-details/", { state: { movie } });
   };
 
   return (
     <form className="searchMovieForm">
       <input
-        className="serachInput"
+        className="searchInput"
         type="text"
-        value={searchQuary}
-        onChange={handleSerach}
+        value={searchQuery}
+        onChange={handleSearch}
         required
         placeholder="Search..."
         style={inputStyle}
       />
-      
+
       <ul className="suggestion_list">
         {movieResults.map((movie, index) => (
-          <li key={index} className="suggestion_item" onClick={() =>navigateToMovie(movie)}>
+          <li key={index} className="suggestion_item" onClick={() => navigateToMovie(movie)}>
             {movie.title}
           </li>
         ))}
