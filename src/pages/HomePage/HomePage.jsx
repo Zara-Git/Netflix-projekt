@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import MovieList from "../../components/Movies/MovieList";
 import Header from "../../components/Header/Header";
 import movieData from "../../movies.json";
 import Carousel from "../../components/carousel/Carousel";
