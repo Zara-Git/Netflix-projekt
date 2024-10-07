@@ -13,7 +13,7 @@ export default function MovieList({ movies }) {
             <img
               src={movie.thumbnail}
               alt={movie.title}
-              style={{ width: "300px", height: "400px" }}
+              style={{ width: "100%", height: "400px", borderRadius: "10px" }}
             />
           </section>
         ))
