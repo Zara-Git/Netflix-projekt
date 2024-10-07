@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MovieList from "../../components/Movies/MovieList";
 import Header from "../../components/Header/Header";
 import movieData from "../../movies.json";
-import Carousel from "../../components/carousel/carousel";
+import Carousel from "../../components/carousel/Carousel";
 
 import "../HomePage/HomePage.css";
 
@@ -30,7 +30,7 @@ export default function HomePage() {
       <h2>Recommended for you</h2>
       {randomeMovies.length > 0 ? (
         <section className="recommended_movies_container">
-          <MovieList movies={randomeMovies} />
+          <Carousel movies={randomeMovies} />
         </section>
        
       ) : (

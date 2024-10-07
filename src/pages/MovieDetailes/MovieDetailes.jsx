@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "./MovieDetailes.css"; // Importera CSS-filen
+
+
+// import "./MovieDetailes.css"; // Importera CSS-filen
 
 const MovieDetails = () => {
   const location = useLocation();
