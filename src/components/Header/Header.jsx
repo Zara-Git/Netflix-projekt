@@ -12,7 +12,7 @@ export default function Header() {
       <div className='logo'>
         <a href="/" onClick={handleHomeClick}>Webflix</a>
       </div>
-      <Search inputStyle={{ width: "800px" }} />
+      <Search inputStyle={{ width: "600px" }} />
       <Navbar />
     </header>
   );
