@@ -14,7 +14,7 @@ describe("HomePage component", () => {
     );
   });
 
-  test("should render HomePage with all sections correctly", () => {
+  test.only("should render HomePage with all sections correctly", () => {
     const headerElement = screen.getByRole("banner");
     expect(headerElement).toBeInTheDocument();
 
@@ -49,7 +49,7 @@ describe("HomePage component", () => {
     expect(searchInput.value).toBe("test");
   });
 
-  test("Search Input should show error message when input is emphty ", ()=> {
+  test("Search Input should be clear ", ()=> {
     const { queryByPlaceholderText } = render(Search);
     const searchInput = queryByPlaceholderText("Search...");
     fireEvent.change(searchInput, { target: { value: "" } });
