@@ -44,18 +44,20 @@
 }
 
 .play_button, .add_button, .back_button{
-   background-color:  #333333;
+   background-color:#e74c3c;
    height: 40px;
    max-width: 250px;
    border-radius: 5px;
    margin-bottom: 5px;
    border: none;
+   font-weight: bold;
+   font-size: 14px;
 }
 
 button:hover{
     cursor: pointer;
     background-color: #474747;
-    color: #ffffff;
+    color: #fff;
 }
 
 @media screen and (max-width: 612px){
