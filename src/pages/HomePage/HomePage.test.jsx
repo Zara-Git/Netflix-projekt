@@ -49,10 +49,18 @@ describe("HomePage component", () => {
     expect(searchInput.value).toBe("test");
   });
 
-  test("Search Input should be clear ", ()=> {
+  test("Search Input is empty", ()=> {
     const { queryByPlaceholderText } = render(Search);
     const searchInput = queryByPlaceholderText("Search...");
     fireEvent.change(searchInput, { target: { value: "" } });
     expect(searchInput.value).toBe("");
+  })
+
+  test.only("Search Input is shown error message 'No movie found' when no movie is found in database", ()=> {
+    const { getByPlaceholderText } = render(Search);
+    const searchInput = getByPlaceholderText("Search...");
+    fireEvent.change(searchInput, { target: { value: "jdjd" } });
+    const errorMessage = screen.getByText("No movie found.")
+    expect(errorMessage).toBeInTheDocument();
   })
 });
