@@ -33,7 +33,7 @@ export default function HomePage() {
         </section>
        
       ) : (
-        <p>No recommended movie found</p>
+        <p> No recommended movie found</p>
       )}
     </section>
   );

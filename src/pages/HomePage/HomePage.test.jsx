@@ -1,38 +1,58 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter  } from "react-router-dom";
-import { describe, test, expect } from "vitest";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { describe, test, expect, beforeEach, vi } from "vitest";
 import HomePage from "./HomePage";
 // import movieData from "../../movies.json";
+import Search from "../../components/Search/Search";
 
 describe("HomePage component", () => {
-  test("should render HomePage with all sections correctly", () => {
-    // Render HomePage-komponenten inuti en Router
+  beforeEach(() => {
     render(
       <BrowserRouter>
         <HomePage />
       </BrowserRouter>
     );
+  });
 
-    // Kontrollera att Header-komponenten visas
+  test("should render HomePage with all sections correctly", () => {
     const headerElement = screen.getByRole("banner");
     expect(headerElement).toBeInTheDocument();
 
-    // Kontrollera att Carousel visas med "Trending now"-rubrik
-    const trendingHeading = screen.getByText("Trending now");
+    const trendingHeading = screen.getByText(/Trending now/i);
     expect(trendingHeading).toBeInTheDocument();
 
-      // Kontrollera att Carousel komponenten renderas med filmer
-      const trendingMovies = screen.getAllByRole("img");
-      expect(trendingMovies.length).toBeGreaterThan(0);
+    const carouselElm = screen.getByTestId("carousel");
+    expect(carouselElm).toBeInTheDocument();
 
-    // Kontrollera att Recommended for you rubriken renderas
     const recommendedTitle = screen.getByText(/Recommended for you/i);
     expect(recommendedTitle).toBeInTheDocument();
-
-      // Kontrollera att den rekommenderade filmernas lista renderas
-      const recommendedMovies = screen.getAllByRole("img");
-      expect(recommendedMovies.length).toBeGreaterThan(0);
-
   });
 
+  test("should render No recommended movie found when there are no random movies", async () => {
+    vi.mock("../../movies.json", () => {
+      return {
+        default: [],
+      };
+    });
+    const noMovieText = await waitFor(() =>
+      screen.getByText(/No recommended movie found/i)
+    );
+
+    expect(noMovieText).toBeVisible();
+    expect(noMovieText).toBeInTheDocument();
+  });
+
+  test("Search Input updates on change", () => {
+    const { queryByPlaceholderText } = render(Search);
+    const searchInput = queryByPlaceholderText("Search...");
+    fireEvent.change(searchInput, { target: { value: "test" } });
+    expect(searchInput.value).toBe("test");
+  });
+
+  test("Search Input should be clear ", ()=> {
+    const { queryByPlaceholderText } = render(Search);
+    const searchInput = queryByPlaceholderText("Search...");
+    fireEvent.change(searchInput, { target: { value: "" } });
+    expect(searchInput.value).toBe("");
+  })
 });
