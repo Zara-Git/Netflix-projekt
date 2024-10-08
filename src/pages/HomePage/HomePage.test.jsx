@@ -56,7 +56,7 @@ describe("HomePage component", () => {
     expect(searchInput.value).toBe("");
   })
 
-  test.only("Search Input is shown error message 'No movie found' when no movie is found in database", ()=> {
+  test("Search Input is shown error message 'No movie found' when no movie is found in database", ()=> {
     const { getByPlaceholderText } = render(Search);
     const searchInput = getByPlaceholderText("Search...");
     fireEvent.change(searchInput, { target: { value: "jdjd" } });
