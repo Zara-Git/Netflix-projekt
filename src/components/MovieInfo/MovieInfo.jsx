@@ -1,5 +1,6 @@
 import './MovieInfo.css'
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
 const MovieInfo = ({movie}) => {
 const actors = movie.actors.join(', ')
@@ -7,6 +8,28 @@ const navigate = useNavigate();
 
 const handleClick = () => {
     navigate(-1);
+};
+
+const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+
+useEffect(() => {
+  const storedBookmarks = JSON.parse(localStorage.getItem("bookmarkedMovies")) || [];
+  setBookmarkedMovies(storedBookmarks);
+}, []);
+
+const isBookmarked = (movieTitle) => {
+  return bookmarkedMovies.some((bookmark) => bookmark.title === movieTitle);
+};
+
+const toggleBookmark = (movie) => {
+  let updatedBookmarks;
+  if (isBookmarked(movie.title)) {
+    updatedBookmarks = bookmarkedMovies.filter((bookmark) => bookmark.title !== movie.title);
+  } else {
+    updatedBookmarks = [...bookmarkedMovies, movie];
+  }
+  setBookmarkedMovies(updatedBookmarks);
+  localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmarks));
 };
 
 return(
@@ -24,7 +47,7 @@ return(
         </div>
         
         <button className="play_button">Play</button>
-        <button className="add_button">Bookmark</button>
+        <button className="add_button" onClick={() => toggleBookmark(movie)}> {isBookmarked(movie.title) ? "Remove Bookmark" : "Add to Bookmark"}</button>
         <p>{movie.synopsis}</p>
         <p><strong>Actors:</strong> <br/> {actors}</p>
         </div>

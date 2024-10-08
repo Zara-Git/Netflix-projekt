@@ -38,6 +38,7 @@ export default function Search({inputStyle}) {
 
   return (
     <form className="searchMovieForm">
+     
       <input
         className="serachInput"
         type="text"
@@ -47,7 +48,7 @@ export default function Search({inputStyle}) {
         placeholder="Search..."
         style={inputStyle}
       />
-      
+        {error && <p className="error">{error}</p>}
       <ul className="suggestion_list">
         {movieResults.map((movie, index) => (
           <li key={index} className="suggestion_item" onClick={() =>navigateToMovie(movie)}>

@@ -1,6 +1,7 @@
 .home_page_container {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 
   & .recommended_movies_container {
     display: flex;
@@ -13,3 +14,23 @@
 }
 
 
+.carousel_container {
+  width: 88%;
+}
+
+
+@media (max-width: 768px) , (max-width: 414px)  {
+
+  .carousel_container {
+    width: 43%;
+  }
+
+  h2{
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+  }
+  .recommended_movies_container{
+    padding: 30px 14px !important;
+  }
+}

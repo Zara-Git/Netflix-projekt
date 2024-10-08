@@ -55,7 +55,7 @@ export default function Carousel({ movies }) {
     ],
   };
   return (
-    <section className="carousel_container">
+    <section className="carousel_container" data-testid="carousel">
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index} className="carousel_content">
