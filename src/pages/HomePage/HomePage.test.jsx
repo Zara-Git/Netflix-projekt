@@ -49,7 +49,7 @@ describe("HomePage component", () => {
     expect(searchInput.value).toBe("test");
   });
 
-  test("Search Input should be clear ", ()=> {
+  test("Search Input should show error message when input is emphty ", ()=> {
     const { queryByPlaceholderText } = render(Search);
     const searchInput = queryByPlaceholderText("Search...");
     fireEvent.change(searchInput, { target: { value: "" } });
