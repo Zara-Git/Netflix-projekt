@@ -3,7 +3,6 @@ import { describe, it, expect, beforeEach } from "vitest";
 import Categories from "./Categories";
 import movieData from "./movies.json";
 import { BrowserRouter as Router } from "react-router-dom";
-// import { MovieDetailes } from "../MovieDetailes/MovieDetailes";
 
 describe("categories component", () => {
   beforeEach(() => {

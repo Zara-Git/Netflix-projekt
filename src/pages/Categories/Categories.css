@@ -1,10 +1,12 @@
-body {
-  margin: 150px;
-  background-color: #141414;
-  font-family: "Arial", sans-serif;
-  width: 400px;
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
+
 .categories-container {
+  margin: 15px;
   margin-top: 30px;
   padding: 20px;
   color: #fff;
@@ -19,15 +21,15 @@ body {
 }
 .movies {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 18rem);
   margin-top: 20px;
-  gap: 150px;
+  gap: 10px;
 }
 .movie-card {
-  width: 350px;
+  width: 250px;
   height: auto;
   background-color: #1c1c1c;
-  border-radius: 30px;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -55,31 +57,34 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 .movie-details {
-  /* padding: 10px; */
-  margin-left: 10px;
+  color: #ecf0f1;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  padding: 12px;
 }
 .movie-details h1 {
   font-size: 1.5rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  /* padding: 10px; */
-  margin-left: 10px;
+  margin-bottom: 10px;
   color: #d2cfcf;
+  font-family: "Roboto", sans-serif;
 }
 
 .movie-details p {
-  font-size: 1.5rem;
-  color: #986b24;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  color: #d2cfcf;
   padding: 14px;
 }
 .menu-button {
   background-color: #e50914;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 10px;
   margin-left: 50px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 7px;
   transition: background-color 0.3s ease;
   z-index: 1000;
 }
@@ -92,8 +97,7 @@ body {
   justify-content: flex-start;
   padding: 20px;
   position: fixed;
-  top: 0;
-  left: -300px;
+
   width: 300px;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.95);
@@ -102,22 +106,73 @@ body {
 }
 
 .GenreMenu h2 {
-  font-size: 1.8rem;
-  /* margin-bottom: 20px; */
+  font-size: 1rem;
   color: #e50914;
   text-transform: uppercase;
 }
-.GenreMenu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.GenreMenu ul li {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem;
-  transition: color 0.2s ease-in-out;
-}
-.GenreMenu ul li :hover {
-  color: #e50914;
+
+@media (max-width: 768px) {
+  /* Make the main container center horizontally */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* No vertical centering to avoid cutoff */
+    align-items: center; /* Center horizontally */
+    padding: 10px;
+    gap: 20px;
+    width: 100%; /* Ensure it spans the full width */
+  }
+
+  /* Center the movie list and ensure it's single column */
+  .movies {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center; /* Center the movie cards horizontally */
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* Center the movie card and keep it within the width */
+  .movie-card {
+    width: 90%; /* Make sure it fits on mobile screens */
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Adjust movie details for mobile */
+  .movie-details h1 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .movie-details p {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  /* Make the category button full width */
+  .menu-button {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+
+  /* Ensure GenreMenu also fits properly */
+  .GenreMenu {
+    width: 100%;
+    padding: 10px;
+    height: auto;
+  }
+
+  .GenreMenu h2 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
 }

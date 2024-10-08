@@ -47,7 +47,7 @@ const Categories = () => {
 
   const handleMovieClick = (movie) => {
     console.log("Navigating with movie:", movie);
-    navigate ('/movie/' + movie.title)
+    navigate("/movie/" + movie.title);
   };
 
   const genres = Object.keys(moviesByGenre);
@@ -58,29 +58,29 @@ const Categories = () => {
       <button className="menu-button" onClick={toggleMenu}>
         Category
       </button>
-
       {menuVisible && (
         <GenreMenu genres={genres} onSelectGenre={handleGenreSelection} />
       )}
+      <div className="main-container">
+        <div className="genre-section">
+          {selectedGenre && <h2>{selectedGenre}</h2>}
+          <div className="movies">
+            {moviesByGenre[selectedGenre]?.map((movie) => (
+              <div
+                key={movie.id}
+                className="movie-card"
+                onClick={() => handleMovieClick(movie)}
+              >
+                <img src={movie.thumbnail} alt={movie.title} />
 
-      <div className="genre-section">
-        {selectedGenre && <h2>{selectedGenre}</h2>}
-
-        <div className="movies">
-          {moviesByGenre[selectedGenre]?.map((movie) => (
-            <div
-              key={movie.id}
-              className="movie-card"
-              onClick={() => handleMovieClick(movie)}
-            >
-              <img src={movie.thumbnail} alt={movie.title} />
-              <div className="movie-details">
-                <h1>{movie.title}</h1>
-                <h3>{movie.actors}</h3>
-                <p>{movie.genre}</p>
+                <div className="movie-details">
+                  <h1>{movie.title}</h1>
+                  <h3>{movie.actors}</h3>
+                  <p>{movie.genre}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
