@@ -1,23 +1,20 @@
 .header {
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    padding: 2rem 1rem;
-    gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
 
-
-    & .logo a{
-     font-size: 3.5rem;
-     text-decoration: none;
-     font-weight: 700;
-     color: #e50914;
-     letter-spacing: 3px;
-
-   }
-   &
-   .logo a:hover {
-      color: #c51922;
-   }
+  & .logo a {
+    font-size: 3.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    color: #e50914;
+    letter-spacing: 3px;
+  }
+  & .logo a:hover {
+    color: #c51922;
+  }
 }
 
 @media (max-width: 768px) {

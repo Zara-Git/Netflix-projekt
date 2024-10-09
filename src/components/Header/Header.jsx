@@ -1,6 +1,6 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from '../Navbar/Navbar';
 import Search from '../Search/Search';
-import "../Header/Header.css";
+import '../Header/Header.css';
 
 export default function Header() {
   // const handleHomeClick = () => {
@@ -8,11 +8,11 @@ export default function Header() {
   // };
 
   return (
-    <header className='header'>
-      <div className='logo'>
+    <header className="header">
+      <div className="logo">
         <a href="/">Webflix</a>
       </div>
-      <Search inputStyle={{ width: "600px" }} />
+      <Search inputStyle={{ width: '600px' }} />
       <Navbar />
     </header>
   );

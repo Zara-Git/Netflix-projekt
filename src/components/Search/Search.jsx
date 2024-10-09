@@ -1,48 +1,52 @@
-import { useEffect, useState } from "react";
-import "../Search/Search.css";
-import movieData from "../../movies.json";
-import { useNavigate } from "react-router-dom";
-import Fuse from "fuse.js";
+import { useEffect, useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import '../Search/Search.css';
+import movieData from '../../movies.json';
+import { useNavigate } from 'react-router-dom';
+import Fuse from 'fuse.js';
 
 export default function Search({ inputStyle }) {
-  const [searchQuary, setSearchQuary] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [movieResults, setMovieResults] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
-  const fuse = new Fuse(movieData, {
-    keys: ["title", "genre", "actors"], // nyckelord som Fuse.js ska använda
-    includeScore: true,
-    threshold: 0.3,
-  });
+
+  const fuse = useMemo(() => {
+    return new Fuse(movieData, {
+      keys: ['title', 'genre', 'actors'], // nyckelord som Fuse.js ska använda
+      includeScore: true,
+      threshold: 0.3,
+    });
+  }, []);
 
   useEffect(() => {
-    if (searchQuary.trim().length > 0) {
-      const result = fuse.search(searchQuary);
+    if (searchQuery.trim().length > 0) {
+      const result = fuse.search(searchQuery);
       const suggestionResults = result.map((result) => result.item);
 
       setMovieResults(suggestionResults);
 
       if (suggestionResults.length === 0) {
-        setError("No movie found.");
+        setError('No movie found.');
       }
     } else {
       setMovieResults([]);
-      setError("");
+      setError('');
     }
-  }, [searchQuary]);
+  }, [searchQuery, fuse]);
 
   const navigateToMovie = (movie) => {
-    setSearchQuary(movie.title);
+    setSearchQuery(movie.title);
     navigate(`/movie/${movie.title}`);
   };
 
   return (
     <form className="searchMovieForm">
       <input
-        className="serachInput"
+        className="searchInput"
         type="text"
-        value={searchQuary}
-        onChange={(e) => setSearchQuary(e.target.value)}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         required
         placeholder="Search..."
         style={inputStyle}
@@ -62,3 +66,7 @@ export default function Search({ inputStyle }) {
     </form>
   );
 }
+
+Search.propTypes = {
+  inputStyle: PropTypes.object,
+};

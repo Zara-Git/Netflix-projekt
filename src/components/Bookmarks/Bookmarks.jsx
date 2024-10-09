@@ -1,34 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Bookmarks.css';
-import Header from '../Header/Header'; // Import the existing Header component
+import Header from '../Header/Header'; //existing Header component
 import { useNavigate } from 'react-router-dom';
 
 export default function Bookmarks() {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
   const navigate = useNavigate();
 
-  // Load bookmarks from localStorage when the component mounts
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarkedMovies')) || [];
+    const storedBookmarks =
+      JSON.parse(localStorage.getItem('bookmarkedMovies')) || [];
     setBookmarkedMovies(storedBookmarks);
   }, []);
 
-  // Remove a bookmark
+  // Remove bookmarkS
   const removeBookmark = (movieTitle) => {
-    const updatedBookmarks = bookmarkedMovies.filter((movie) => movie.title !== movieTitle);
+    const updatedBookmarks = bookmarkedMovies.filter(
+      (movie) => movie.title !== movieTitle
+    );
     setBookmarkedMovies(updatedBookmarks);
     localStorage.setItem('bookmarkedMovies', JSON.stringify(updatedBookmarks));
   };
 
   return (
     <div className="bookmarks-container">
-      <Header /> {/* Add the header at the top */}
+      <Header />
       <h2>Your Bookmarked Movies</h2>
       {bookmarkedMovies.length > 0 ? (
         <ul className="bookmarks-list">
           {bookmarkedMovies.map((movie, index) => (
             <li key={index} className="bookmark-item">
-              <img src={movie.thumbnail} alt={movie.title} className="bookmark-poster" onClick={() => navigate ('/movie/'+ movie.title)} />
+              <img
+                src={movie.thumbnail}
+                alt={movie.title}
+                className="bookmark-poster"
+                onClick={() => navigate('/movie/' + movie.title)}
+              />
               <div className="bookmark-info">
                 <h3>{movie.title}</h3>
                 <p>{movie.genre}</p>
