@@ -10,7 +10,7 @@
   margin-top: 30px;
   padding: 20px;
   color: #fff;
-  width: 300px;
+  width: 100%;
 }
 .genre-section h2 {
   margin-top: 20px;
@@ -97,10 +97,9 @@
   justify-content: flex-start;
   padding: 20px;
   position: fixed;
-
   width: 300px;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.2);
   color: #fff;
   z-index: 999;
 }
@@ -109,6 +108,54 @@
   font-size: 1rem;
   color: #e50914;
   text-transform: uppercase;
+}
+.allMovies_container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 30px;
+  margin-left: 150px;
+  padding: 1rem;
+  gap: 0px;
+}
+
+.movie-card1 {
+  width: 263px;
+  /* height: auto; */
+  margin-left: 90 px;
+  padding: 34px;
+  background-color: #1c1c1c;
+  /* border-radius: 10px;
+  overflow: hidden; */
+  /* cursor: pointer;
+  position: relative; */
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.movie-card1 hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.6),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.movie-card1 img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.movie-card1 img:hover {
+  overflow: hidden;
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.movie-card1 h1 {
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
+  color: #333;
 }
 
 @media (max-width: 768px) {
