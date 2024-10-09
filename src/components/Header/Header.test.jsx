@@ -26,7 +26,7 @@ describe("Header component", () => {
 
     test("Search component should render with correct width style", () => {
         const searchInput = screen.getByPlaceholderText(/search/i);
-        expect(searchInput).toHaveStyle({ width: '800px' });
+        expect(searchInput).toHaveStyle({ width: '600px' });
     });
 
     test("Navbar should be present in the header", () => {
