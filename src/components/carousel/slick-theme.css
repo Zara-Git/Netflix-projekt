@@ -1,21 +1,21 @@
 @charset 'UTF-8';
 /* Slider */
 .slick-loading .slick-list {
-  background: #fff url("./ajax-loader.gif") center center no-repeat;
+  background: #fff url('./ajax-loader.gif') center center no-repeat;
 }
 
 /* Icons */
 @font-face {
-  font-family: "slick";
+  font-family: 'slick';
   font-weight: normal;
   font-style: normal;
 
-  src: url("./fonts/slick.eot");
+  src: url('./fonts/slick.eot');
   src:
-    url("./fonts/slick.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/slick.woff") format("woff"),
-    url("./fonts/slick.ttf") format("truetype"),
-    url("./fonts/slick.svg#slick") format("svg");
+    url('./fonts/slick.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/slick.woff') format('woff'),
+    url('./fonts/slick.ttf') format('truetype'),
+    url('./fonts/slick.svg#slick') format('svg');
 }
 /* Arrows */
 .slick-prev,
@@ -63,7 +63,7 @@
 
 .slick-prev:before,
 .slick-next:before {
-  font-family: "slick";
+  font-family: 'slick';
   font-size: 30px;
   line-height: 1;
 
@@ -82,29 +82,29 @@
 .slick-prev {
   left: -25px;
 }
-[dir="rtl"] .slick-prev {
+[dir='rtl'] .slick-prev {
   right: -25px;
   left: auto;
 }
 .slick-prev:before {
-  content: "←";
+  content: '←';
 }
-[dir="rtl"] .slick-prev:before {
-  content: "→";
+[dir='rtl'] .slick-prev:before {
+  content: '→';
 }
 
 .slick-next {
   right: -25px;
 }
-[dir="rtl"] .slick-next {
+[dir='rtl'] .slick-next {
   right: auto;
   left: -25px;
 }
 .slick-next:before {
-  content: "→";
+  content: '→';
 }
-[dir="rtl"] .slick-next:before {
-  content: "←";
+[dir='rtl'] .slick-next:before {
+  content: '←';
 }
 
 /* Dots */
@@ -164,7 +164,7 @@
   opacity: 1;
 }
 .slick-dots li button:before {
-  font-family: "slick";
+  font-family: 'slick';
   font-size: 20px;
   line-height: 20px;
 
@@ -175,7 +175,7 @@
   width: 30px;
   height: 8px;
   border-radius: 5px;
-  content: "";
+  content: '';
   text-align: center;
   background-color: #484646;
   opacity: 0.25;
@@ -192,7 +192,6 @@
 }
 
 @media (max-width: 768px) {
-
   .slick-dots {
     display: none !important;
   }

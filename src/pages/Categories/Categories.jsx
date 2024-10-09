@@ -9,13 +9,12 @@ const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const [menuVisible, setMenuVisible] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState(null);
-  const [allMovies, setAllMovies] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const categorizedMovies = {};
-    setAllMovies(movieData);
+
     // Loop through each movie in the movieData array
     movieData.forEach((movie) => {
       const genres = movie.genre.split(", "); // Split the genre string into an array
@@ -40,7 +39,6 @@ const Categories = () => {
   const handleGenreSelection = (genre) => {
     setSelectedGenre(genre);
     setMenuVisible(false);
-    setAllMovies([]);
   };
 
   // const handleNavigate = () => {
@@ -58,25 +56,11 @@ const Categories = () => {
     <div className="Categories-container">
       <Header />
       <button className="menu-button" onClick={toggleMenu}>
-        &#9776;
+        Category
       </button>
-
       {menuVisible && (
         <GenreMenu genres={genres} onSelectGenre={handleGenreSelection} />
       )}
-      <div className="allMovies_container">
-        {allMovies?.map((movie) => (
-          <div
-            key={movie.id}
-            className="movie-card1"
-            onClick={() => handleMovieClick(movie)}
-          >
-            <img src={movie.thumbnail} alt={movie.title} />
-            <h1>{movie.title}</h1>
-          </div>
-        ))}
-      </div>
-
       <div className="main-container">
         <div className="genre-section">
           {selectedGenre && <h2>{selectedGenre}</h2>}

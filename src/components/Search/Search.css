@@ -3,72 +3,77 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  & .serachInput {
-    padding: 20px 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    background-color: #2c2c2c;
-    color: var(--primary-text-color);
-    border-radius: 10px;
-    outline: none;
-    width: 500px;
-  }
-  & .suggestion_list {
-    position: absolute;
-    top: 60px;
-    width: 100%;
-    margin-top: 10px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    background-color: none;
-    z-index: 999;
-    font-size: 1.5rem;
-    letter-spacing: 1.5px;
-    background-color: #3d3b3b;
+}
+
+.searchInput {
+  padding: 10px 15px;
+  border: 1px solid #3d3b3b;
+  font-size: 1rem;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+.suggestion_list {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #3d3b3b;
+  z-index: 999;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+}
+
+.suggestion_item {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.suggestion_item:hover {
+  text-decoration: underline;
+}
+
+.error {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  color: red;
+  font-weight: bold;
+  border: solid 1px red;
+  width: 36rem;
+  height: 26px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .searchInput {
+    width: 100% !important;
+    padding: 12px 15px;
+    font-size: 0.9rem;
   }
 
-  & .suggestion_item {
-    padding: 15px;
-    cursor: pointer;
-  }
-
-  & .suggestion_item:hover {
-    text-decoration: underline;
-  }
-
-  & .error {
-    position: absolute;
-    top: 3rem;
-    left: 2rem;
-    color: red;
-    font-weight: bold;
-    border: solid 1px red;
-    width: 36rem;
-    height: 26px;
-    text-align: center;
-    
+  .error {
+    width: 90%;
+    height: 22px;
   }
 }
 
-
-@media (max-width: 768px) {
-  .serachInput {
-    width: 70% !important;
-
-    
+@media (max-width: 480px) {
+  .searchInput {
+    width: 100% !important;
+    padding: 10px 15px;
+    font-size: 0.8rem;
   }
-  &.error{
-    position: absolute;
-    top: 3rem;
-    left: 2rem;
-    color: red;
-    font-weight: 400;
-    border: solid 1px red;
-    width: 11rem;
+
+  .error {
+    width: 80%;
     height: 22px;
-    text-align: center;
   }
-
 }
