@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "test": "vitest",
+    "test:integration": "vitest run src/IntegrationTests/MasterIntegration.test.jsx",
     "format": "prettier --write 'src/**/*.{js,jsx,json,css,md}'"
   },
   "dependencies": {
@@ -20,11 +21,6 @@
     "react-router-dom": "^6.26.2",
     "react-slick": "^0.30.2",
     "uuid": "^10.0.0"
-  },
-  "jest": {
-    "setupFiles": [
-      "test-setup.js"
-    ]
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

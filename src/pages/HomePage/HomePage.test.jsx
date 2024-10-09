@@ -14,7 +14,7 @@ describe('HomePage component', () => {
     );
   });
 
-  test.only('should render HomePage with all sections correctly', () => {
+  test('should render HomePage with all sections correctly', () => {
     const headerElement = screen.getByRole('banner');
     expect(headerElement).toBeInTheDocument();
 

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import movieData from "./movies.json";
-import "./Categories.css";
-import GenreMenu from "./GenreMenu";
-import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import { useState, useEffect } from 'react';
+import movieData from './movies.json';
+import './Categories.css';
+import GenreMenu from './GenreMenu';
+import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
@@ -17,7 +17,7 @@ const Categories = () => {
 
     // Loop through each movie in the movieData array
     movieData.forEach((movie) => {
-      const genres = movie.genre.split(", "); // Split the genre string into an array
+      const genres = movie.genre.split(', '); // Split the genre string into an array
 
       // Loop through each genre
       genres.forEach((genre) => {
@@ -46,8 +46,8 @@ const Categories = () => {
   // };
 
   const handleMovieClick = (movie) => {
-    console.log("Navigating with movie:", movie);
-    navigate("/movie/" + movie.title);
+    console.log('Navigating with movie:', movie);
+    navigate('/movie/' + movie.title);
   };
 
   const genres = Object.keys(moviesByGenre);
