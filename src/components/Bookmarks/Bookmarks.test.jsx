@@ -7,8 +7,8 @@ describe('Bookmarks component', () => {
   beforeEach(() => {
     localStorage.clear();
   });
-  //test.only
-  test.only('renders "No bookmarks added yet" when there are no bookmarks', () => {
+
+  test('renders "No bookmarks added yet" when there are no bookmarks', () => {
     render(
       <BrowserRouter>
         <Bookmarks />
@@ -17,8 +17,8 @@ describe('Bookmarks component', () => {
 
     expect(screen.getByText('No bookmarks added yet.')).toBeInTheDocument();
   });
-  //test.only
-  test.only('renders bookmarks when they are available', () => {
+
+  test('renders bookmarks when they are available', () => {
     const mockBookmarks = [
       { title: 'Movie 1', genre: 'Action', thumbnail: 'thumbnail1.jpg' },
       { title: 'Movie 2', genre: 'Comedy', thumbnail: 'thumbnail2.jpg' },
@@ -36,8 +36,8 @@ describe('Bookmarks component', () => {
     expect(screen.getByText('Movie 1')).toBeInTheDocument();
     expect(screen.getByText('Movie 2')).toBeInTheDocument();
   });
-  //test.only
-  test.only('removes a bookmark when remove button is clicked', () => {
+
+  test('removes a bookmark when remove button is clicked', () => {
     const mockBookmarks = [
       { title: 'Movie 1', genre: 'Action', thumbnail: 'thumbnail1.jpg' },
       { title: 'Movie 2', genre: 'Comedy', thumbnail: 'thumbnail2.jpg' },
