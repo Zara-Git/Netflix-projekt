@@ -31,26 +31,21 @@ describe("Categories component", () => {
   });
   it("toggle the menu visiblity when the button is clicked", () => {
     const menuButton = screen.getByRole("button", { name: /Category/ });
+
+    //check that menu is not visible initially
+    expect(
+      screen.queryByText(movieData[0].genre.split(", ")[0])
+    ).not.toBeInTheDocument();
+    // click to show genre menu
     fireEvent.click(menuButton);
+    //kontrollera att menyn är synlig
+    const firstGenre = movieData[0].genre.split(", ")[0];
+    expect(screen.getByText(firstGenre)).toBeInTheDocument();
   });
-
-  //check that menu is not visible initially
-  expect(
-    screen.queryByText(movieData[0].genre.split(", ")[0])
-  ).not.toBeInTheDocument();
-
-  // click to show genre menu
-  // fireEvent.click(menuButton);
-
-  //kontrollera att menyn är synlig
-  // const firstGenre = movieData[0].genre.split(", ")[0];
-  // expect(screen.getByText(firstGenre)).toBeInTheDocument();
 
   it("sets the selected genre and hides the menu after selection", () => {
     const menuButton = screen.getByRole("button", { name: /Category/ });
     fireEvent.click(menuButton);
-
-    ////////////
 
     //kontrollera att den valda genren vissas som en rubrik
     // expect(
