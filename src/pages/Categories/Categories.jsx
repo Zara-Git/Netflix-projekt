@@ -1,3 +1,111 @@
+// import { useState, useEffect } from "react";
+// import movieData from "./movies.json";
+// import "./Categories.css";
+// import GenreMenu from "./GenreMenu";
+// import { useNavigate } from "react-router-dom";
+// import Header from "../../components/Header/Header";
+
+// const Categories = () => {
+//   const [moviesByGenre, setMoviesByGenre] = useState({});
+//   const [menuVisible, setMenuVisible] = useState(false);
+//   const [selectedGenre, setSelectedGenre] = useState(null);
+//   const [allMovies, setAllMovies] = useState([]);
+
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const categorizedMovies = {};
+//     setAllMovies(movieData);
+//     // Loop through each movie in the movieData array
+//     movieData.forEach((movie) => {
+//       const genres = movie.genre.split(", "); // Split the genre string into an array
+
+//       // Loop through each genre
+//       genres.forEach((genre) => {
+//         if (!categorizedMovies[genre]) {
+//           categorizedMovies[genre] = [];
+//         }
+//         categorizedMovies[genre].push(movie);
+//       });
+//     });
+
+//     // Update the state with the categorized movies
+//     setMoviesByGenre(categorizedMovies);
+//   }, []);
+
+//   const toggleMenu = () => {
+//     setMenuVisible(!menuVisible);
+//   };
+
+//   const handleGenreSelection = (genre) => {
+//     setSelectedGenre(genre);
+//     setMenuVisible(false);
+//     setAllMovies([]);
+//   };
+
+//   // const handleNavigate = () => {
+//   //   navigate("/category");
+//   // };
+
+//   const handleMovieClick = (movie) => {
+//     console.log("Navigating with movie:", movie);
+//     navigate("/movie/" + movie.title);
+//   };
+
+//   const genres = Object.keys(moviesByGenre);
+
+//   return (
+//     <div className="Categories-container">
+//       <Header />
+//       <button className="menu-button" onClick={toggleMenu} aria-label="Category Menu">
+//         &#9776;
+//       </button>
+
+//       {menuVisible && (
+//         <GenreMenu genres={genres} onSelectGenre={handleGenreSelection} />
+//       )}
+//       <div className="allMovies_container">
+//         {allMovies?.map((movie) => (
+//           <div
+//             key={movie.id}
+//             className="movie-card1"
+//             onClick={() => handleMovieClick(movie)}
+//           >
+//             <img src={movie.thumbnail} alt={movie.title} />
+//             <h1>{movie.title}</h1>
+//           </div>
+//         ))}
+//       </div>
+
+//       <div className="main-container">
+//         <div className="genre-section">
+//           {selectedGenre && <h2>{selectedGenre}</h2>}
+//           <div className="movies">
+//             {moviesByGenre[selectedGenre]?.map((movie) => (
+//               <div
+//                 key={movie.id}
+//                 className="movie-card"
+//                 onClick={() => handleMovieClick(movie)}
+//               >
+//                 <img src={movie.thumbnail} alt={movie.title} />
+
+//                 <div className="movie-details">
+//                   <h1>{movie.title}</h1>
+//                   <h3>{movie.actors.join(', ')}</h3>
+//                   <p>{movie.genre}</p>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Categories;
+
+
 import { useState, useEffect } from "react";
 import movieData from "./movies.json";
 import "./Categories.css";
@@ -15,7 +123,8 @@ const Categories = () => {
 
   useEffect(() => {
     const categorizedMovies = {};
-    setAllMovies(movieData);
+    setAllMovies(movieData); // Set all movies initially
+
     // Loop through each movie in the movieData array
     movieData.forEach((movie) => {
       const genres = movie.genre.split(", "); // Split the genre string into an array
@@ -40,12 +149,8 @@ const Categories = () => {
   const handleGenreSelection = (genre) => {
     setSelectedGenre(genre);
     setMenuVisible(false);
-    setAllMovies([]);
+    // Optionally, filter the allMovies if you want to display specific genre movies
   };
-
-  // const handleNavigate = () => {
-  //   navigate("/category");
-  // };
 
   const handleMovieClick = (movie) => {
     console.log("Navigating with movie:", movie);
@@ -57,7 +162,7 @@ const Categories = () => {
   return (
     <div className="Categories-container">
       <Header />
-      <button className="menu-button" onClick={toggleMenu}>
+      <button className="menu-button" onClick={toggleMenu} aria-label="Category Menu">
         &#9776;
       </button>
 
@@ -67,7 +172,7 @@ const Categories = () => {
       <div className="allMovies_container">
         {allMovies?.map((movie) => (
           <div
-            key={movie.id}
+            key={movie.id} // Ensure movie.id is unique
             className="movie-card1"
             onClick={() => handleMovieClick(movie)}
           >
@@ -83,15 +188,14 @@ const Categories = () => {
           <div className="movies">
             {moviesByGenre[selectedGenre]?.map((movie) => (
               <div
-                key={movie.id}
+                key={movie.id} // Ensure movie.id is unique
                 className="movie-card"
                 onClick={() => handleMovieClick(movie)}
               >
                 <img src={movie.thumbnail} alt={movie.title} />
-
                 <div className="movie-details">
                   <h1>{movie.title}</h1>
-                  <h3>{movie.actors}</h3>
+                  <h3>{movie.actors.join(', ')}</h3> {/* Use join to format actors */}
                   <p>{movie.genre}</p>
                 </div>
               </div>
