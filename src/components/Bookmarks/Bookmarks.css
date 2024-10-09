@@ -1,117 +1,117 @@
 .bookmarks-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
-  
+
 .bookmarks-container h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .bookmarks-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 0.2fr));
-    grid-gap: 20px;
-    
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 0.2fr));
+  grid-gap: 20px;
 }
 
 .bookmark-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    box-shadow: 0 2px 8px rgba(25, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(25, 255, 255, 0.5);
 }
 
 .bookmark-item:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .bookmark-poster {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .bookmark-info {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .bookmark-info h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333;
 }
 
 .bookmarks-container p {
-    font-size: 1rem;
-    color: #888;
-    text-align: center;
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
 }
 
 .remove-bookmark-btn {
-    background-color: #e54533;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #e54533;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .remove-bookmark-btn:hover {
-    background-color: #c0392b;
-    transform: scale(1.05);
+  background-color: #c0392b;
+  transform: scale(1.05);
 }
 
 .remove-bookmark-btn:active {
-    transform: scale(1);
+  transform: scale(1);
 }
 
 @media (max-width: 600px) {
-    .bookmarks-container {
-        padding: 10px;
-    }
+  .bookmarks-container {
+    padding: 10px;
+  }
 
-    .bookmarks-container h2 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
+  .bookmarks-container h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 
-    .bookmarks-list {
-        grid-template-columns: 1fr;
-        grid-gap: 15px;
-    }
+  .bookmarks-list {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
 
-    .bookmark-item {
-        max-width: 80%;
-        margin: 0 auto;
-    }
+  .bookmark-item {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 
-    .bookmark-info h3 {
-        font-size: 0.9rem;
-    }
+  .bookmark-info h3 {
+    font-size: 0.9rem;
+  }
 
-    .bookmark-info p {
-        font-size: 0.8rem;
-    }
+  .bookmark-info p {
+    font-size: 0.8rem;
+  }
 
-    .remove-bookmark-btn {
-        font-size: 0.85rem;
-        padding: 6px 10px;
-    }
+  .remove-bookmark-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
 }

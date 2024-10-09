@@ -1,16 +1,18 @@
-import Slider from "react-slick";
-import "../carousel/slick.css";
-import "../carousel/slick-theme.css";
-import "../carousel/Carousel.css";
-import { useState, useEffect } from "react";
+import Slider from 'react-slick';
+import PropTypes from 'prop-types'; // Importing PropTypes
+import '../carousel/slick.css';
+import '../carousel/slick-theme.css';
+import '../carousel/Carousel.css';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Carousel({ movies }) {
   const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
-    const storedBookmarks = JSON.parse(localStorage.getItem("bookmarkedMovies")) || [];
+    const storedBookmarks =
+      JSON.parse(localStorage.getItem('bookmarkedMovies')) || [];
     setBookmarkedMovies(storedBookmarks);
   }, []);
 
@@ -21,12 +23,14 @@ export default function Carousel({ movies }) {
   const toggleBookmark = (movie) => {
     let updatedBookmarks;
     if (isBookmarked(movie.title)) {
-      updatedBookmarks = bookmarkedMovies.filter((bookmark) => bookmark.title !== movie.title);
+      updatedBookmarks = bookmarkedMovies.filter(
+        (bookmark) => bookmark.title !== movie.title
+      );
     } else {
       updatedBookmarks = [...bookmarkedMovies, movie];
     }
     setBookmarkedMovies(updatedBookmarks);
-    localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmarks));
+    localStorage.setItem('bookmarkedMovies', JSON.stringify(updatedBookmarks));
   };
 
   const settings = {
@@ -35,7 +39,7 @@ export default function Carousel({ movies }) {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    initialSlide:0,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 600,
@@ -54,19 +58,27 @@ export default function Carousel({ movies }) {
       },
     ],
   };
+
   return (
     <section className="carousel_container" data-testid="carousel">
       <Slider {...settings}>
         {movies.map((movie, index) => (
           <div key={index} className="carousel_content">
-            <img src={movie.thumbnail} alt={movie.title} className="carousel_img" onClick={() => navigate ('/movie/'+ movie.title)} />
+            <img
+              src={movie.thumbnail}
+              alt={movie.title}
+              className="carousel_img"
+              onClick={() => navigate('/movie/' + movie.title)}
+            />
             <h3>{movie.title}</h3>
             <p className="genre_info">{movie.genre}</p>
             <button
               className="bookmark_button"
               onClick={() => toggleBookmark(movie)}
             >
-              {isBookmarked(movie.title) ? "Remove Bookmark" : "Add to Bookmark"}
+              {isBookmarked(movie.title)
+                ? 'Remove Bookmark'
+                : 'Add to Bookmark'}
             </button>
           </div>
         ))}
@@ -74,3 +86,14 @@ export default function Carousel({ movies }) {
     </section>
   );
 }
+
+//PropTypes for validation
+Carousel.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      thumbnail: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+    })
+  ).isRequired, // Validate that 'movies' is an array of objects with the specified shape
+};

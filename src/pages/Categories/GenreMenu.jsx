@@ -1,5 +1,5 @@
-import React from "react";
-import "./GenreMenu.css";
+import PropTypes from 'prop-types'; // Import PropTypes
+import './GenreMenu.css';
 
 const GenreMenu = ({ genres, onSelectGenre }) => {
   return (
@@ -13,6 +13,12 @@ const GenreMenu = ({ genres, onSelectGenre }) => {
       </ul>
     </div>
   );
+};
+
+// PropTypes for validation
+GenreMenu.propTypes = {
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onSelectGenre: PropTypes.func.isRequired,
 };
 
 export default GenreMenu;

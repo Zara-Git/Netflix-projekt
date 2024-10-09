@@ -1,30 +1,39 @@
-import React, { useState, useEffect } from "react";
-import "../Movies/MovieList.css";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
+import '../Movies/MovieList.css';
 
 export default function MovieList({ movies }) {
   const [bookmarks, setBookmarks] = useState(() => {
-    const storedBookmarks = localStorage.getItem("bookmarkedMovies");
+    const storedBookmarks = localStorage.getItem('bookmarkedMovies');
     return storedBookmarks ? JSON.parse(storedBookmarks) : [];
   });
 
   const toggleBookmark = (movie) => {
     const isBookmarked = bookmarks.some((bm) => bm.title === movie.title);
-    
+
     if (!isBookmarked) {
       const updatedBookmarks = [...bookmarks, movie];
       setBookmarks(updatedBookmarks);
-      localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmarks));
-      console.log("Bookmark added for", movie.title);
+      localStorage.setItem(
+        'bookmarkedMovies',
+        JSON.stringify(updatedBookmarks)
+      );
+      console.log('Bookmark added for', movie.title);
     } else {
-      const updatedBookmarks = bookmarks.filter((bm) => bm.title !== movie.title);
+      const updatedBookmarks = bookmarks.filter(
+        (bm) => bm.title !== movie.title
+      );
       setBookmarks(updatedBookmarks);
-      localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmarks));
-      console.log("Bookmark removed for", movie.title);
+      localStorage.setItem(
+        'bookmarkedMovies',
+        JSON.stringify(updatedBookmarks)
+      );
+      console.log('Bookmark removed for', movie.title);
     }
   };
 
   useEffect(() => {
-    console.log("Bookmarks updated:", bookmarks);
+    console.log('Bookmarks updated:', bookmarks);
   }, [bookmarks]);
 
   return (
@@ -34,18 +43,20 @@ export default function MovieList({ movies }) {
           <section
             className="movie_card"
             key={index}
-            style={{ marginBottom: "20px", position: "relative" }}
+            style={{ marginBottom: '20px', position: 'relative' }}
           >
             <img
               src={movie.thumbnail}
               alt={movie.title}
-              style={{ width: "100%", height: "400px", borderRadius: "10px" }}
+              style={{ width: '100%', height: '400px', borderRadius: '10px' }}
             />
-            <button 
-              className="bookmark-button" 
+            <button
+              className="bookmark-button"
               onClick={() => toggleBookmark(movie)}
             >
-              {bookmarks.some((bm) => bm.title === movie.title) ? "Remove from Bookmarks" : "Bookmark"}
+              {bookmarks.some((bm) => bm.title === movie.title)
+                ? 'Remove from Bookmarks'
+                : 'Bookmark'}
             </button>
           </section>
         ))
@@ -55,3 +66,13 @@ export default function MovieList({ movies }) {
     </section>
   );
 }
+
+// Add PropTypes for validation
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      thumbnail: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

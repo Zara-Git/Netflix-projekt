@@ -1,57 +1,64 @@
-import { useState } from "react";
-import "../Search/Search.css";
-import movieData from "../../movies.json";
-import { useNavigate } from "react-router-dom";
-import Fuse from "fuse.js";
+import { useEffect, useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import '../Search/Search.css';
+import movieData from '../../movies.json';
+import { useNavigate } from 'react-router-dom';
+import Fuse from 'fuse.js';
 
-export default function Search({inputStyle}) {
-  const [searchQuary, setSearchQuary] = useState("");
+export default function Search({ inputStyle }) {
+  const [searchQuery, setSearchQuery] = useState('');
   const [movieResults, setMovieResults] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const fuse = new Fuse(movieData, {
-    keys: ["title", "genre", "actors"], // nyckelord som Fuse.js ska använda
-    includeScore: true,
-    threshold: 0.3,
-  });
+  const fuse = useMemo(() => {
+    return new Fuse(movieData, {
+      keys: ['title', 'genre', 'actors'], // nyckelord som Fuse.js ska använda
+      includeScore: true,
+      threshold: 0.3,
+    });
+  }, []);
 
-  const handleSerach = (e) => {
-    const userInput = e.target.value;
-    setSearchQuary(userInput);
-
-    if (userInput.trim() ) {
-      const result = fuse.search(userInput);
+  useEffect(() => {
+    if (searchQuery.trim().length > 0) {
+      const result = fuse.search(searchQuery);
       const suggestionResults = result.map((result) => result.item);
+
       setMovieResults(suggestionResults);
-      setError("No result found");
+
+      if (suggestionResults.length === 0) {
+        setError('No movie found.');
+      }
     } else {
       setMovieResults([]);
-      setError("");
+      setError('');
     }
-  };
+  }, [searchQuery, fuse]);
 
   const navigateToMovie = (movie) => {
-    setSearchQuary(movie.title);
+    setSearchQuery(movie.title);
     navigate(`/movie/${movie.title}`);
   };
 
   return (
     <form className="searchMovieForm">
-     
       <input
-        className="serachInput"
+        className="searchInput"
         type="text"
-        value={searchQuary}
-        onChange={handleSerach}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         required
         placeholder="Search..."
         style={inputStyle}
       />
-        {error && <p className="error">{error}</p>}
+      {error && <p className="error">{error}</p>}
       <ul className="suggestion_list">
         {movieResults.map((movie, index) => (
-          <li key={index} className="suggestion_item" onClick={() =>navigateToMovie(movie)}>
+          <li
+            key={index}
+            className="suggestion_item"
+            onClick={() => navigateToMovie(movie)}
+          >
             {movie.title}
           </li>
         ))}
@@ -59,3 +66,7 @@ export default function Search({inputStyle}) {
     </form>
   );
 }
+
+Search.propTypes = {
+  inputStyle: PropTypes.object,
+};

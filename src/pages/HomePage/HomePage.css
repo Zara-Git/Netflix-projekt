@@ -13,24 +13,21 @@
   }
 }
 
-
 .carousel_container {
   width: 88%;
 }
 
-
-@media (max-width: 768px) , (max-width: 414px)  {
-
+@media (max-width: 768px), (max-width: 414px) {
   .carousel_container {
     width: 43%;
   }
 
-  h2{
+  h2 {
     font-size: 19px;
     display: flex;
     justify-content: center;
   }
-  .recommended_movies_container{
+  .recommended_movies_container {
     padding: 30px 14px !important;
   }
 }

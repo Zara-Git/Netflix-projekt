@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 * {
   --background-color: #121212;
@@ -8,12 +7,11 @@
   --secondary-text-color: #b3b3b3;
   --button-background-color: #333333;
   --button-text-color: #ffffff;
-
 }
 h1,
 h2,
 button {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 3px;
   color: var(--primary-text-color);
 }
@@ -21,7 +19,7 @@ button {
 p,
 a,
 li {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -33,6 +31,3 @@ body {
   background-color: var(--background-color);
   color: var(--primary-text-color);
 }
-
-
-
