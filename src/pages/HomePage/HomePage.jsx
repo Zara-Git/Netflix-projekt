@@ -10,7 +10,7 @@ export default function HomePage() {
   const [randomeMovies, setRandomeMovies] = useState([]);
 
   const getRandomeMovieObject = () => {
-    const randomeIndex = [...movies].sort(() => Math.random() - 0.5); //genererar en random nummer mellan 0 och 1 för varje element och subtraherar 0.5 från det.
+    const randomeIndex = movies.sort(() => Math.random() - 0.5); //genererar en random nummer mellan 0 och 1 för varje element och subtraherar 0.5 från det.
     const randomeMov = randomeIndex.slice(0, 6); // ge oss 5 slumpmässiga filmer från vår blandade array
     setRandomeMovies(randomeMov);
   };
@@ -33,7 +33,7 @@ export default function HomePage() {
         </section>
        
       ) : (
-        <p>No recommended movie found</p>
+        <p data-testid="no_movie_text">No recommended movie found</p>
       )}
     </section>
   );
