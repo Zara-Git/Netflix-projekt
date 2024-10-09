@@ -1,38 +1,59 @@
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import '@testing-library/jest-dom';
-// import Bookmarks from './Bookmarks';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Bookmarks from './Bookmarks';
 
-// const mockMovies = [
-//   { id: 1, title: 'Movie 1', description: 'Description 1', poster: 'poster1.jpg' },
-//   { id: 2, title: 'Movie 2', description: 'Description 2', poster: 'poster2.jpg' }
-// ];
+describe('Bookmarks component', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
-// beforeEach(() => {
-//   vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => JSON.stringify(mockMovies));
-//   vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {});
-// });
+  test.only('renders "No bookmarks added yet" when there are no bookmarks', () => {
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
 
-// afterEach(() => {
-//   vi.clearAllMocks();  // Replacing jest with vi
-// });
+    expect(screen.getByText('No bookmarks added yet.')).toBeInTheDocument();
+  });
 
-// test.only('renders bookmarked movies', () => {
-//   render(<Bookmarks />);
-//   expect(screen.getByText('Movie 1')).toBeInTheDocument();
-//   expect(screen.getByText('Movie 2')).toBeInTheDocument();
-// });
+  test.only('renders bookmarks when they are available', () => {
+    const mockBookmarks = [
+      { title: 'Movie 1', genre: 'Action', thumbnail: 'thumbnail1.jpg' },
+      { title: 'Movie 2', genre: 'Comedy', thumbnail: 'thumbnail2.jpg' },
+    ];
 
-// test.only('removes a bookmark when the remove button is clicked', () => {
-//   render(<Bookmarks />);
-//   const removeButton = screen.getAllByText('Remove Bookmark')[0];
-//   fireEvent.click(removeButton);
-//   expect(screen.queryByText('Movie 1')).not.toBeInTheDocument();
-//   expect(localStorage.setItem).toHaveBeenCalled();
-// });
+    localStorage.setItem('bookmarkedMovies', JSON.stringify(mockBookmarks));
 
-// test.only('shows no bookmarks message when no movies are bookmarked', () => {
-//   vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => JSON.stringify([]));
-//   render(<Bookmarks />);
-//   expect(screen.getByText('No bookmarks added yet.')).toBeInTheDocument();
-// });
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Your Bookmarked Movies')).toBeInTheDocument();
+    expect(screen.getByText('Movie 1')).toBeInTheDocument();
+    expect(screen.getByText('Movie 2')).toBeInTheDocument();
+  });
+
+  test.only('removes a bookmark when remove button is clicked', () => {
+    const mockBookmarks = [
+      { title: 'Movie 1', genre: 'Action', thumbnail: 'thumbnail1.jpg' },
+      { title: 'Movie 2', genre: 'Comedy', thumbnail: 'thumbnail2.jpg' },
+    ];
+
+    localStorage.setItem('bookmarkedMovies', JSON.stringify(mockBookmarks));
+
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
+
+    const removeButton = screen.getAllByText('Remove Bookmark')[0];
+    fireEvent.click(removeButton);
+
+    expect(screen.queryByText('Movie 1')).not.toBeInTheDocument();
+  });
+});
