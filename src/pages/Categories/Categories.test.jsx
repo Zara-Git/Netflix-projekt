@@ -13,7 +13,7 @@ describe("Categories component", () => {
     );
   });
 
-  it("Categorizes movies by gener correctly on intial render", () => {
+  it("Categorizes movies by genre correctly on intial render", () => {
     const uniqueGenres = new Set();
     movieData.forEach((movie) => {
       movie.genre.split(", ").forEach((genre) => {
@@ -46,17 +46,13 @@ describe("Categories component", () => {
   it("sets the selected genre and hides the menu after selection", () => {
     const menuButton = screen.getByRole("button", { name: /Category/ });
     fireEvent.click(menuButton);
+    const firstGenre = movieData[0].genre.split(", ")[0];
+    fireEvent.click(screen.getByText(firstGenre));
 
     //kontrollera att den valda genren vissas som en rubrik
-    // expect(
-    //   screen.getByRole("heading", { name: firstGenre })
-    // ).toBeInTheDocument();
-    // });
-    // expect(
-    //   screen
-    //     .queryByText(movieData[1].genre.split(", ")[0])
-    //     .not.toBeInTheDocument()
-    // );
+    expect(screen.queryByRole("heading", { level: 2 })).toHaveTextContent(
+      firstGenre
+    );
   });
 });
 // });
