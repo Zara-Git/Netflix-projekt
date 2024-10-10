@@ -4,6 +4,7 @@ import "./Categories.css";
 import GenreMenu from "./GenreMenu";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
+// 
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
