@@ -3,10 +3,10 @@ import './GenreMenu.css';
 
 const GenreMenu = ({ genres, onSelectGenre }) => {
   return (
-    <div className="genre-menu">
-      <ul>
+    <div className="genre-menu" aria-label="Genre Menu">
+      <ul role="menu">
         {genres.map((genre) => (
-          <li key={genre} onClick={() => onSelectGenre(genre)}>
+          <li key={genre} onClick={() => onSelectGenre(genre)} role="menuitem">
             {genre}
           </li>
         ))}
@@ -14,6 +14,7 @@ const GenreMenu = ({ genres, onSelectGenre }) => {
     </div>
   );
 };
+
 
 // PropTypes for validation
 GenreMenu.propTypes = {
