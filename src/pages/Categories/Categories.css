@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: repeat(3, 18rem);
   margin-top: 20px;
-  gap: 10px;
+  gap: 11px;
 }
 .movie-card {
   width: 250px;
