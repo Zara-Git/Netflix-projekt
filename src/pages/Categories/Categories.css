@@ -1,178 +1,146 @@
-.main-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.categories-container {
-  margin: 15px;
-  margin-top: 30px;
-  padding: 20px;
-  color: #fff;
-  width: 300px;
-}
-.genre-section h2 {
-  margin-top: 20px;
-  font-size: 2rem;
-  color: #e50914;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.movies {
-  display: grid;
-  grid-template-columns: repeat(3, 18rem);
-  margin-top: 20px;
-  gap: 10px;
-}
-.movie-card {
-  width: 250px;
-  height: auto;
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  box-shadow:
-    0 8px 16px rgba(0, 0, 0, 0.5),
-    0 6px 20px rgba(0, 0, 0, 0.3);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.movie-card hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 12px 24px rgba(0, 0, 0, 0.6),
-    0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.movie-card img {
-  width: 100%;
-  object-fit: cover;
-}
-.movie-card img:hover {
-  overflow: hidden;
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-.movie-details {
-  color: #ecf0f1;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  padding: 12px;
-}
-.movie-details h1 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #d2cfcf;
-  font-family: 'Roboto', sans-serif;
-}
-
-.movie-details p {
-  font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
-  color: #d2cfcf;
-  padding: 14px;
-}
-.menu-button {
-  background-color: #e50914;
-  border: none;
-  color: white;
-  padding: 10px;
-  margin-left: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 7px;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-}
-.menu-button:hover {
-  background-color: #f6121d;
-}
-.GenreMenu {
+/*  */
+.Categories-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
   padding: 20px;
-  position: fixed;
-
-  width: 300px;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
-  color: #fff;
-  z-index: 999;
 }
 
-.GenreMenu h2 {
+.Header {
+  margin-bottom: 20px;
+}
+
+.menu-button {
+  padding: 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+  align-self: flex-start; 
+}
+
+.menu-button:hover {
+  color: blue;
+  border-radius: 8px;
+}
+
+.genre-menu {
+  position: absolute; /* Positioned relative to the button */
+  top: 42%;
+  left: 28px; /* Align the menu with the left side of the button */
+  background-color: white; /* Menu background */
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
+  z-index: 10; /* Ensure it stays above other elements */
+  padding: 10px; /* Small padding inside the menu */
+  width: 200px; /* Set width for the menu */
+  display: block;
+}
+
+/* Genre list styling */
+.genre-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.genre-menu ul li {
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.genre-menu ul li:hover {
+  background-color: #f0f0f0;
+  color: rgb(74, 74, 74);
+  border-radius: 8px;
+}
+
+.allMovies_container,
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.movie-card1,
+.movie-card {
+  flex: 1 1 calc(33.33% - 20px);
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card1:hover,
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card1 img,
+.movie-card img {
+  width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+h3 {
   font-size: 1rem;
-  color: #e50914;
-  text-transform: uppercase;
+  color: gray;
+}
+
+.reset-button {
+  padding: 10px;
+  color:#333;
+  border-radius: 8px;
 }
 
 @media (max-width: 768px) {
-  /* Make the main container center horizontally */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* No vertical centering to avoid cutoff */
-    align-items: center; /* Center horizontally */
+  .Categories-container {
     padding: 10px;
-    gap: 20px;
-    width: 100%; /* Ensure it spans the full width */
   }
 
-  /* Center the movie list and ensure it's single column */
-  .movies {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center; /* Center the movie cards horizontally */
-    gap: 20px;
-    width: 100%;
-  }
-
-  /* Center the movie card and keep it within the width */
+  .movie-card1,
   .movie-card {
-    width: 90%; /* Make sure it fits on mobile screens */
-    max-width: 300px;
-    height: auto;
-    margin: 0 auto;
+    flex: 1 1 calc(50% - 20px);
   }
 
-  .movie-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  /* Adjust movie details for mobile */
-  .movie-details h1 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-  }
-
-  .movie-details p {
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  /* Make the category button full width */
-  .menu-button {
-    width: 100%;
-    margin: 0 auto;
+  h1,
+  h2,
+  h3 {
     font-size: 1rem;
   }
+}
 
-  /* Ensure GenreMenu also fits properly */
-  .GenreMenu {
-    width: 100%;
-    padding: 10px;
-    height: auto;
-  }
-
-  .GenreMenu h2 {
-    font-size: 1.25rem;
-    text-align: center;
-  }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
