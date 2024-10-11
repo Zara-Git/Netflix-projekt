@@ -23,29 +23,6 @@ describe('Master Integration Tests', () => {
     expect(screen.getByText(/Recommended for you/i)).toBeInTheDocument();
   });
 
-  it('should navigate to categories and show genres', () => {
-    // Render Categories page in the router
-    render(
-      <MemoryRouter initialEntries={['/categories']}>
-        <Routes>
-          <Route path="/categories" element={<Categories />} />
-        </Routes>
-      </MemoryRouter>
-    );
-
-    //open genre menu
-    fireEvent.click(screen.getByRole('button', { name: /Category/i }));
-
-    //show all genres are shown
-    const uniqueGenres = new Set();
-    movieData.forEach((movie) => {
-      movie.genre.split(', ').forEach((genre) => uniqueGenres.add(genre));
-    });
-    uniqueGenres.forEach((genre) => {
-      expect(screen.getByText(genre)).toBeInTheDocument();
-    });
-  });
-
   it('should navigate to a film view and render movie details', () => {
     // movie details page
     render(

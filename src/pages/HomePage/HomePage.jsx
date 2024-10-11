@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes for validation
+import PropTypes from 'prop-types'; 
 import Header from '../../components/Header/Header';
 import movieData from '../../movies.json';
 import Carousel from '../../components/carousel/Carousel';
@@ -9,8 +9,16 @@ export default function HomePage() {
   const [randomeMovies, setRandomeMovies] = useState([]);
 
   const getRandomeMovieObject = () => {
-    const randomIndex = movieData.sort(() => Math.random() - 0.5); //genererar en random nummer mellan 0 och 1 för varje element och subtraherar 0.5 från det.
-    const randomMov = randomIndex.slice(0, 6); // ge oss 5 slumpmässiga filmer från vår blandade array
+
+    const trendingMovies = movieData.filter((mov) => mov.isTrending);
+    
+    const availableMoviesForRecommendation = movieData.filter(
+      (mov) => !mov.isTrending
+    );
+
+    const randomIndex = availableMoviesForRecommendation.sort(() => Math.random() - 0.5);
+    
+    const randomMov = randomIndex.slice(0, 6);
     setRandomeMovies(randomMov);
   };
 
@@ -37,7 +45,6 @@ export default function HomePage() {
   );
 }
 
-//PropTypes for validation
 HomePage.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -49,7 +56,6 @@ HomePage.propTypes = {
   ),
 };
 
-// Default props to avoid missing movies array error if not passed
 HomePage.defaultProps = {
   movies: movieData,
 };
