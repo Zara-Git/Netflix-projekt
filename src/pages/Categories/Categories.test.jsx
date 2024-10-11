@@ -1,7 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import Categories from "./Categories";
-import GenreMenu from "./GenreMenu";
 import movieData from "./movies.json";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -72,28 +71,34 @@ describe("Categories component", () => {
     });
   });
   
-  // it("sets the selected genre and hides the menu after selection", async () => {
-  //   renderWithRouter(<Categories movieData={mockMovies} />); 
-  
-  //   const menuButtons = screen.getAllByLabelText(/Category Menu/i);
-  //   fireEvent.click(menuButtons[0]); 
-  
-  //   await waitFor(() => {
-  //     expect(screen.getByRole("menu")).toBeInTheDocument();
-  //   });
-  
-  //   const genreMenu = screen.getByRole("menu");
-  //   const genreItem = within(genreMenu).getByText("Drama"); 
-  //   fireEvent.click(genreItem);
+  it("sets the selected genre and hides the menu after selection", async () => {
 
-  //   await waitFor(() => {
-  //     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
-  //   });
+    renderWithRouter(<Categories movieData={mockMovies} />);
   
-  //   expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent("Drama");
-  // });
+    const menuButtons = screen.getAllByLabelText(/Category Menu/i);
+    fireEvent.click(menuButtons[0]);
+
   
+    await waitFor(() => {
+      expect(screen.getByRole("menu")).toBeInTheDocument();
+    });
   
+    const genreMenu = screen.getByRole("menu");
+
+    const genreItem = within(genreMenu).getByText("Drama");
+
+    fireEvent.click(genreItem);
+
+    await waitFor(() => {
+      expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+    });
+
+  
+    const headings = screen.getAllByRole("heading", { level: 2 });
+    const dramaHeading = headings.find((heading) => heading.textContent === "Drama");
+    expect(dramaHeading).toBeInTheDocument();
+  });
+
 
   it("renders all movies correctly", () => {
     const movieTitles = movieData.map(movie => movie.title);
@@ -118,7 +123,6 @@ describe("Categories component", () => {
       expect(screen.getByText(firstMovieTitle)).toBeInTheDocument();
     });
 
-    // Check the image
     const movieImage = screen.getByAltText(firstMovieTitle);
     expect(movieImage).toHaveAttribute('src', expect.stringContaining('MV5B'));
   });
