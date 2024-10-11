@@ -1,7 +1,6 @@
 import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import Categories from "./Categories";
-import GenreMenu from "./GenreMenu";
 import movieData from "./movies.json";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -99,7 +98,9 @@ describe("Categories component", () => {
     const dramaHeading = headings.find((heading) => heading.textContent === "Drama");
     expect(dramaHeading).toBeInTheDocument();
   });
-  
+
+
+
   it("renders all movies correctly", () => {
     const movieTitles = movieData.map(movie => movie.title);
     movieTitles.forEach(title => {
@@ -123,7 +124,6 @@ describe("Categories component", () => {
       expect(screen.getByText(firstMovieTitle)).toBeInTheDocument();
     });
 
-    // Check the image
     const movieImage = screen.getByAltText(firstMovieTitle);
     expect(movieImage).toHaveAttribute('src', expect.stringContaining('MV5B'));
   });
