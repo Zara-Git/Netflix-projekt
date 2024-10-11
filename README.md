@@ -1,38 +1,27 @@
-# Webflix - Movie Web Application
+# Webflix
 
-Webflix is a modern movie web application that allows users to browse, search, and bookmark their favorite movies. It showcases trending movies, personalized recommendations, and genre-based filtering.
-
-## Table of Contents
-
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+Webflix is a movie browsing application that allows users to explore trending and recommended movies, search for specific titles, and filter movies by genre. The application is built using React and provides a user-friendly interface for movie enthusiasts.
 
 ## Features
 
-- **Trending Movies:** Displays a carousel of movies that are currently trending.
-- **Recommended Movies:** Provides personalized movie recommendations based on available movie data.
-- **Genre Filtering:** Allows users to filter movies by genre and view all movies in a selected genre.
-- **Movie Search:** A search bar to find movies by title, genre, or actors with autocomplete suggestions.
-- **Bookmarks:** Users can bookmark their favorite movies for quick access later.
-- **Responsive Design:** The application is designed to work seamlessly across various devices.
+- **Trending Movies**: View a carousel of trending movies on the home page.
+- **Recommended Movies**: Get personalized movie recommendations based on your viewing history.
+- **Genre Filtering**: Filter movies by genre and view detailed information about each film.
+- **Search Functionality**: Easily search for movies by title, genre, or actors.
+- **Bookmarking**: Save your favorite movies to a bookmarks list for easy access later.
 
 ## Technologies Used
 
-- **React**: Frontend library for building user interfaces.
-- **React Router**: For routing and navigation.
-- **React Slick**: For carousel functionality.
-- **FUSE.js**: For fuzzy search capabilities.
+- **React**: JavaScript library for building user interfaces.
+- **React Router**: For routing and navigation between different components.
+- **Fuse.js**: A powerful, lightweight fuzzy-search library for finding movies.
 - **CSS**: For styling the application.
-- **LocalStorage**: For storing bookmarked movies.
 
 ## Installation
 
-To run this application locally, follow these steps:
+To run the application locally, follow these steps:
 
-1. **Clone the repository:**
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/webflix.git
+   cd webflix
