@@ -100,6 +100,7 @@ describe("Categories component", () => {
   });
 
 
+
   it("renders all movies correctly", () => {
     const movieTitles = movieData.map(movie => movie.title);
     movieTitles.forEach(title => {
