@@ -112,7 +112,6 @@ describe("Categories component", () => {
 
     fireEvent.click(screen.getByText(firstMovieTitle));
 
-    // Expect the correct encoded URL path
     expect(window.location.pathname).toBe("/movie/" + encodeURIComponent(firstMovieTitle));
 });
 
