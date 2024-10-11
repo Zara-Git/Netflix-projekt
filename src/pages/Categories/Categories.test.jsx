@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor,within } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, within } from "@testing-library/react";
 import { describe, it, expect, beforeEach } from "vitest";
 import Categories from "./Categories";
 import GenreMenu from "./GenreMenu";
@@ -73,22 +73,27 @@ describe("Categories component", () => {
   });
   
   it("sets the selected genre and hides the menu after selection", async () => {
+
     renderWithRouter(<Categories movieData={mockMovies} />);
   
     const menuButtons = screen.getAllByLabelText(/Category Menu/i);
     fireEvent.click(menuButtons[0]);
+
   
     await waitFor(() => {
       expect(screen.getByRole("menu")).toBeInTheDocument();
     });
   
     const genreMenu = screen.getByRole("menu");
+
     const genreItem = within(genreMenu).getByText("Drama");
+
     fireEvent.click(genreItem);
 
     await waitFor(() => {
       expect(screen.queryByRole("menu")).not.toBeInTheDocument();
     });
+
   
     const headings = screen.getAllByRole("heading", { level: 2 });
     const dramaHeading = headings.find((heading) => heading.textContent === "Drama");
