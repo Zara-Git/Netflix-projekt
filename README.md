@@ -1,6 +1,6 @@
 # Webflix
 
-Webflix is a movie browsing application that allows users to explore trending and recommended movies, search for specific titles, and filter movies by genre. The application is built using React and provides a user-friendly interface for movie enthusiasts.
+Webflix is an interactive movie browsing application designed to provide users with an engaging platform to explore a vast library of films. The app features an intuitive interface that allows movie enthusiasts to discover trending and recommended titles, perform targeted searches for specific movies, and filter films by genre.
 
 ## Features
 
@@ -24,4 +24,4 @@ To run the application locally, follow these steps:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/webflix.git
-   cd webflix
+   
