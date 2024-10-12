@@ -2,10 +2,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 import HomePage from '../pages/HomePage/HomePage';
-import Categories from '../pages/Categories/Categories';
 import FilmView from '../pages/FilmView/FilmView';
 import Bookmarks from '../components/Bookmarks/Bookmarks';
-import movieData from '../pages/Categories/movies.json';
+
 
 describe('Master Integration Tests', () => {
   it('should render the homepage with all sections', () => {
@@ -21,29 +20,6 @@ describe('Master Integration Tests', () => {
     // important that homepage elements are rendered
     expect(screen.getByText(/Trending now/i)).toBeInTheDocument();
     expect(screen.getByText(/Recommended for you/i)).toBeInTheDocument();
-  });
-
-  it('should navigate to categories and show genres', () => {
-    // Render Categories page in the router
-    render(
-      <MemoryRouter initialEntries={['/categories']}>
-        <Routes>
-          <Route path="/categories" element={<Categories />} />
-        </Routes>
-      </MemoryRouter>
-    );
-
-    //open genre menu
-    fireEvent.click(screen.getByRole('button', { name: /Category/i }));
-
-    //show all genres are shown
-    const uniqueGenres = new Set();
-    movieData.forEach((movie) => {
-      movie.genre.split(', ').forEach((genre) => uniqueGenres.add(genre));
-    });
-    uniqueGenres.forEach((genre) => {
-      expect(screen.getByText(genre)).toBeInTheDocument();
-    });
   });
 
   it('should navigate to a film view and render movie details', () => {

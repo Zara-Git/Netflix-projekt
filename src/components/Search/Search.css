@@ -43,7 +43,7 @@
 .error {
   position: absolute;
   top: 3rem;
-  left: 2rem;
+  left: 1rem;
   color: red;
   font-weight: bold;
   border: solid 1px red;
