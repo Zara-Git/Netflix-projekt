@@ -73,9 +73,10 @@ export default function Carousel({ movies }) {
             <h3>{movie.title}</h3>
             <p className="genre_info">{movie.genre}</p>
             <button
+            
               className="bookmark_button"
               onClick={() => toggleBookmark(movie)}
-            >
+            > <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffff"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
               {isBookmarked(movie.title)
                 ? 'Remove Bookmark'
                 : 'Add to Bookmark'}
