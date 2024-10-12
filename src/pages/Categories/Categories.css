@@ -27,7 +27,7 @@
 }
 
 .menu-button:hover {
-  color: blue;
+  color: rgb(255, 42, 0);
   border-radius: 8px;
 }
 
@@ -35,8 +35,8 @@
   position: absolute;
   top: 42%;
   left: 28px;
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: rgb(181, 178, 178);
+  border: 1px solid #302f2f;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
   padding: 10px;
