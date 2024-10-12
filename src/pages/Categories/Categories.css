@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/*  */
+
 .Categories-container {
   display: flex;
   flex-direction: column;
@@ -16,14 +16,14 @@
 }
 
 .menu-button {
-  padding: 1rem;
+  padding: 2rem;
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   transition: color 0.2s;
   position: relative;
-  align-self: flex-start; 
+  align-self: flex-start;
 }
 
 .menu-button:hover {
@@ -32,15 +32,15 @@
 }
 
 .genre-menu {
-  position: absolute; /* Positioned relative to the button */
+  position: absolute;
   top: 42%;
-  left: 28px; /* Align the menu with the left side of the button */
-  background-color: white; /* Menu background */
+  left: 28px;
+  background-color: white;
   border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
-  z-index: 10; /* Ensure it stays above other elements */
-  padding: 10px; /* Small padding inside the menu */
-  width: 200px; /* Set width for the menu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 10px;
+  width: 200px;
   display: block;
 }
 
@@ -65,22 +65,21 @@
 
 .allMovies_container,
 .movies {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
   justify-content: space-around;
   width: 100%;
+  gap: 50px;
 }
 
 .movie-card1,
 .movie-card {
-  flex: 1 1 calc(33.33% - 20px);
-  margin: 10px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  height: auto;
 }
 
 .movie-card1:hover,
@@ -90,8 +89,13 @@
 
 .movie-card1 img,
 .movie-card img {
+  max-width: 200px;
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px gray;
+  /* transition: transform 0.3s ease-in-out; */
+  margin-bottom: 10px;
 }
 
 h1,
@@ -100,24 +104,20 @@ h3 {
   font-family: 'Arial', sans-serif;
 }
 
-h1 {
-  font-size: 1.5rem;
-  color: #333;
-}
-
 h2 {
-  font-size: 1.2rem;
-  color: #444;
+  font-size: 1rem;
+  color: white;
+  margin-left: 40px;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 0.5rem;
   color: gray;
 }
 
 .reset-button {
   padding: 10px;
-  color:#333;
+  color: #333;
   border-radius: 8px;
 }
 
