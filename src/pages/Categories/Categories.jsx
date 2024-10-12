@@ -1,11 +1,9 @@
-
 import { useState, useEffect } from 'react';
 import movieData from './movies.json';
 import './Categories.css';
 import GenreMenu from './GenreMenu';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-
 
 const Categories = () => {
   const [moviesByGenre, setMoviesByGenre] = useState({});
@@ -87,14 +85,12 @@ const Categories = () => {
                     alt={movie.title}
                     onError={(e) => {
                       e.target.onerror = null;
- new-branch-style
-                      e.target.src = '/path-to-fallback-image.jpg'; // Ensure this path is correct
 
+                      e.target.src = '/path-to-fallback-image.jpg'; // Ensure this path is correct
                     }}
                   />
                   <div className="movie-details">
                     <h3>{movie.title}</h3>
- new-branch-style
 
                     <p>{movie.genre}</p>
                   </div>
